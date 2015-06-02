@@ -1,0 +1,13 @@
+<Context path="/mistrutswebapp" codBase="mistrutswebapp">
+   <Resource name="jdbc/ConexionHSQLDS" 
+		auth="Container" 
+        type="javax.sql.DataSource" 
+        driverClassName="org.hsqldb.jdbcDriver" 
+	   	url="jdbc:hsqldb:mem:memoriadb"
+	   	username="sa"
+	   	password=""
+        maxActive="8" 
+        maxIdle="4"
+	   	maxWait="10000"
+	 />
+</Context>

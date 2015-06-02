@@ -1,0 +1,15 @@
+#footer {
+
+margin: 20px;
+padding: 20px;
+background: #5E7BCC;
+clear: both;
+text-align: center;
+border-top: 2px solid #5E7BCC;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+border-radius: 20px;
+-moz-box-shadow: rgb (94,123,204) 5px 5px;
+-webkit-box-shadow: rgb (94,123,204) 5px 5px;
+box-shadow: rgb (94,123,204) 5px 5px inset;
+}

@@ -1,0 +1,157 @@
+h1 {
+	color: blue;
+	text-align: center
+}
+
+h2 {
+	color: red;
+	font-style: italic;
+	text-align: center
+}
+
+h3 {
+	font-weigth: bold;
+	text-align: center
+}
+
+p {
+	font-family: sans-serif
+}
+
+table {
+	align:center
+}
+.heading {
+	text-align: center
+}
+
+p.emphasis {
+	font-weight: bold
+}
+/*#footer{font-family:sans-serif; font-weight:bold; font-style:italic; color:white; background-color:black; text-align:center}*/
+ul {
+	list-style-type: square
+}
+
+ol {
+	list-style-type: lower-roman
+}
+
+a:link {
+	color: blue;
+	text-decoration: none
+}
+
+a:visited {
+	color: blue
+}
+
+th{
+	text-align:center;
+	color:blue;
+}
+
+.a {
+	text-decoration: none;
+	padding: 1px 3px;
+	display: inline-block;
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-ms-transition: all 1s linear;
+	-o-transition: all 1.4s linear;
+	transition: all 1s linear;
+}
+
+.a:hover { /*background-color: #5E7BCC ;*/
+	/*background-color: #2586d7;
+	margin-top: -2px;
+	padding-bottom: 12px;*/
+	/*background: #A0AFD9;*/
+	color: box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+	-webkit-transform: scale(1.5, 1.5);
+	-moz-transform: scale(1.5, 1.5);
+	-ms-transform: scale(1.5, 1.5);
+	-o-transform: scale(1.5, 1.5);
+	transform: scale(1.5, 1.5);
+	-webkit-transition: all .8s linear;
+	-moz-transition: all .8s linear;
+	-ms-transition: all .8s linear;
+	-o-transition: all .8s linear;
+	transition: all .8s linear;
+}
+
+#logotipo {
+	
+}
+
+.hp {
+	text-decoration: none;
+	border-radius: 10px;
+	padding: 2px 5px 5px 5px;
+}
+
+.hp:hover {
+	background: #ccc;
+}
+
+#navigationbar {
+	/* display: inline;
+    width: 120px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #A0AFD9;
+    text-align: center;
+    padding: 4px;
+    text-transform: uppercase;*/
+	display: inline;
+	font-family: Arial;
+	font-weight: bold;
+	text-align: center;
+	font-size: 11px;
+	text-decoration: none;
+	padding: 10px;
+	background-color: #A0AFD9;
+	color: #fff;
+	font-size: 11px;
+}
+
+#leftnavigation {
+	float: left;
+	height: 100px;
+	color: white;
+	background-color: #FFFFFF;
+	padding: 3em
+}
+
+#content {
+	margin-left: 1.1em;
+	margin-right: 8.1em;
+	text-align: center;
+	/*border: thick solid #000*/
+}
+/* #rightnavigation {float: right; height: 400px; color: white; background-color: rgb(204,255,51)}*/
+#pagefooter {
+	clear: left
+}
+
+.topnavigationlink {
+	clear: left;
+	margin-left: 1em;
+	font-size: 1.1em
+}
+
+.leftnavigationlink {
+	font-size: 1em;
+	margin-left: 1.1em;
+	margin-right: 1.1em
+}
+/* .rightnavigationlink {font-size: 1em; margin-left: 1.1em; margin-right: 1.1em} */
+.companyname {
+	font-family: "Comic Sans MS", cursive;
+	color: rgb(0, 255, 0)
+}
+
+.errormessage {
+	color: red
+}
+

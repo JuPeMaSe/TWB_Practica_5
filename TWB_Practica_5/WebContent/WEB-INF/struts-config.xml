@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+ "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+ 		<form-bean name="loginBean" type="com.mistrutswebapp.beans.LoginBean" />
+ 		<form-bean name="usuarioBean" type="com.mistrutswebapp.beans.UsuarioBean" />
+ 		<form-bean name="perfilBean" type="com.mistrutswebapp.beans.PerfilBean" />
+ 		<form-bean name="consultaBean" type="com.mistrutswebapp.beans.ConsultaBean" />
+ 		<form-bean name="resultadoConsultaBean" type="com.mistrutswebapp.beans.ResultadoConsultaBean" />
+ 		<form-bean name="administrarBean" type="com.mistrutswebapp.beans.AdministrarBean" />
+ 		<form-bean name="eliminarUsuariosBean" type="com.mistrutswebapp.beans.EliminarUsuariosBean" /> 
+ 		<form-bean name="eliminarPerfilesBean" type="com.mistrutswebapp.beans.EliminarPerfilesBean" />
+ 		<form-bean name="modificarBean" type="com.mistrutswebapp.beans.ModificarBean" />
+ 		<form-bean name="mostrarPerfilCreadoBean" type="com.mistrutswebapp.beans.MostrarPerfilCreadoBean" />
+ 		<!-- <form-bean name="mostrarPerfilModificarBean" type="com.mistrutswebapp.beans.MostrarPerfilModificarBean" /> --> 					
+ 	</form-beans>
+ 	
+	<global-forwards type="org.apache.struts.action.ActionForward">
+		<forward name="home" path="/homePage.jsp" redirect="false"/>
+	</global-forwards>
+	<action-mappings>
+		<action path="/home" forward="/homePage.jsp" />
+		<action path="/fromhomeconsulta" forward="/consultaPage.jsp" />
+		<action path="/fromhomealta" 
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/altaPage.jsp" />
+			<forward name="registrado" path="/displaylogin.jsp" />
+			<forward name="admin" path= "/displaylogin.jsp"/>
+		</action>
+		<action path="/fromhomebaja"  
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/loginform.jsp" />
+			<forward name="registrado" path="/bajaPage.jsp" />
+			<forward name="admin" path= "/eliminarUsuariosPage.jsp"/> 			
+		</action>
+		<action path="/fromhomemodificar" 
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/loginform.jsp" />
+			<forward name="registrado" path="/modificarPage.jsp" />
+			<forward name="admin" path= "/modificarPage.jsp"/>
+		</action>
+		<action path="/fromhomeeliminar" 
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/loginform.jsp" />
+			<forward name="registrado" path="/eliminarPage.jsp" />
+			<forward name="admin" path= "/eliminarPage.jsp"/>
+		</action>
+		<action path="/fromhomecrear" 
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/loginform.jsp" />
+			<forward name="registrado" path="/crearPage.jsp" />
+			<forward name="admin" path= "/crearPage.jsp"/>
+		</action>
+		<action path="/fromhomeadministrar" 
+			type= "com.mistrutswebapp.action.PageHomeAction" 
+			input="/homePage.jsp">
+			<forward name="noRegistrado" path="/loginform.jsp" />
+			<forward name="registrado" path="/administrarPage.jsp" />
+		</action>
+		<action path="/processConsulta" 
+ 	   		type="com.mistrutswebapp.action.ConsultaAction" 
+ 	   		name="consultaBean"
+ 		   	scope="request"
+ 		   	validate="true"
+ 		   	input="/consultaPage.jsp" >
+<!--  		   	<forward name="succes" path="/resultadoConsulta.jsp" />    -->
+			<forward name="succes" path="/resultadoConsulta.jsp" /> 
+ 		   	<forward name="notfound" path="/notfound.jsp" />
+		</action>
+		<action path="/mostrarPerfilSelected" 
+ 	   		type="com.mistrutswebapp.action.ResultadoConsultaAction" 
+ 	   		name="resultadoConsultaBean"
+ 		   	scope="request"
+ 		   	validate="true"
+ 		   	input="/resultadoConsulta.jsp" >
+			<forward name="success" path="/mostrarPerfilSeleccionado.jsp" /> 
+ 		   	<forward name="notfound" path="/notfound.jsp" />
+		</action>
+		<action path="/processlogin"
+	   		type="com.mistrutswebapp.action.LoginAction"
+	   		name="loginBean"
+		   	scope="request"
+		   	validate="true" 
+		   	input="/loginform.jsp" > 
+		   	<forward name="found" path="/displaylogin.jsp" />
+		   	<forward name="notfound" path="/notfound.jsp" />
+		</action>	
+		<action path="/processAlta" 
+ 	   		type="com.mistrutswebapp.action.AltaAction" 
+ 	   		name="usuarioBean"
+ 		   	scope="request"
+ 		   	validate="true"
+ 		   	input="/altaPage.jsp" >
+ 		   	<forward name="succes" path="/crearPage.jsp" /> 
+<!-- 		   	<forward name="notfound" path="/notfound.jsp" /> -->
+ 		</action>
+ 		<action path="/processCrear"
+ 			type="com.mistrutswebapp.action.CrearAction"
+ 			name="perfilBean"
+ 			scope="session"
+ 			validate="true"
+ 			input="/crearPage.jsp">
+ 			<forward name="succes" path="/mostrarPerfilCreado.jsp" />
+ 			<forward name="refresh" path="/crearPage.jsp" />
+ 		</action>		
+ 		<action path="/processGrabar"
+ 			type="com.mistrutswebapp.action.MostrarPerfilCreadoAction"
+ 			name="mostrarPerfilCreadoBean"
+ 			scope="request"
+ 			validate="true"
+ 			input="/mostrarPerfilCreado.jsp"> 
+ 			<forward name="succes" path="/homePage.jsp" />
+ 		</action> 			
+		<action path="/creaBD"
+			type="com.mistrutswebapp.action.CreaBDAction"
+			input= "/inicioPage.jsp">
+			<forward name="Ok" path= "/homePage.jsp"/> 
+			<!-- <forward name="error" path= "/notfound.jsp"/>--> 
+		</action>
+		<action path="/mostrarBD"
+			type="com.mistrutswebapp.action.MostrarBDAction"
+			input= "/homePage.jsp">
+			<forward name="Ok" path= "/mostrarBD.jsp"/> 
+			<forward name="error" path= "/notfound.jsp"/> 
+		</action>
+		<action path="/processAdministrar"
+ 			type="com.mistrutswebapp.action.AdministrarAction"
+ 			name="administrarBean"
+ 			scope="request"
+ 			input="/administrarPage.jsp"> 			
+ 		</action>
+ 		<action path="/processBaja"
+ 		    type="com.mistrutswebapp.action.BajaAction">
+			<forward name="sucess" path="/bajaConfirmada.jsp"/> 		    
+ 		</action>
+ 		<action path="/processEliminarUsuarios"
+ 			type="com.mistrutswebapp.action.EliminarUsuariosAction"
+ 			name="eliminarUsuariosBean"
+ 			scope="request"> 
+ 			<forward name="success" path= "/usuariosEliminadosAdministrador.jsp"/>			 			 			
+ 		</action>
+ 		<action path="/processEliminarPerfiles"
+ 			type="com.mistrutswebapp.action.EliminarPerfilAction"
+ 			name="eliminarPerfilesBean"
+ 			scope="request"
+ 			input="/eliminarPage.jsp"> 	
+ 			<forward name="Ok" path= "/homePage.jsp"/> 
+			<!-- <forward name="error" path= "/notfound.jsp"/>  -->		
+ 		</action>
+ 		<action path="/mostrarPerfilModificar"
+ 			type="com.mistrutswebapp.action.ModificarAction"
+ 			name="modificarBean"
+ 			scope="request"
+ 			input="/modificarPage.jsp"> 	
+ 			<!-- <forward name="success" path= "/mostrarPerfilModificar.jsp"/>  -->
+ 			<forward name="success" path= "/crearPage.jsp"/>    
+			<forward name="exit" path= "/homePage.jsp"/>  		
+ 		</action>
+ 		<action path="/processPerfilModificado"
+ 			type="com.mistrutswebapp.action.MostrarPerfilModificarAction"
+ 			name="perfilBean"
+ 			scope="request"
+ 			input="/mostrarPerfilModificar.jsp"> 	
+ 			<!-- name="mostrarPerfilModificarBean"-->
+ 			<forward name="success" path= "/homePage.jsp"/> 
+ 			<forward name="cancel" path= "/homePage.jsp"/> 
+			<forward name="refresh" path= "/mostrarPerfilModificar.jsp"/>   		
+ 		</action>
+ 		<action path="/addUsuarios" 
+			type= "com.mistrutswebapp.action.AddUsuariosBDAction" 
+			input="/homePage.jsp">
+			<forward name="success" path="/homePage.jsp" />
+		</action>
+	</action-mappings>	
+ 	<message-resources parameter="ApplicationResources" />
+ 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn"> 
+  		<set-property property="pathnames" value="/org/apache/struts/validator/validator-rules-compressed.xml, /WEB-INF/validation.xml"/> 
+ 	</plug-in>
+</struts-config>
