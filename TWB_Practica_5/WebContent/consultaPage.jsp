@@ -28,7 +28,7 @@
 				
 				<tr>
 					<td><html:checkbox property="chkPais"/></td>
-					<th><label for="pais">País:</label></th> 
+					<td><label for="pais">País:</label></td> 
 <!-- 						<td><html:text property="pais" /></td> -->
 					<td align="left">
 					<html:select property="pais">
@@ -42,19 +42,19 @@
 				</tr>
 				<tr>
 					<td><html:checkbox property="chkProvincia"></html:checkbox></td>
-					<th><label for="provincia">Provincia:</label></th>
+					<td><label for="provincia">Provincia:</label></td>
 					<td align="left"><html:text property="provincia" /></td>
 					<td><html:errors property="provincia" /></td>
 				</tr>
 				<tr>
 					<td><html:checkbox property="chkLocalidad"></html:checkbox></td>
-					<th><label for="localidad">Localidad:</label></th>
+					<td><label for="localidad">Localidad:</label></td>
 					<td align="left"><html:text property="localidad" /></td>
 					<td><html:errors property="localidad" /></td>
 				</tr>
 				<tr>
 				 	<td><html:checkbox property="chkTecnologia"></html:checkbox></td>
-					<th><label for="tecn_ID">Tecnología:</label></th>
+					<td><label for="tecn_ID">Tecnología:</label></td>
 					<td align="left"><html:select property="tecn_ID">
 					 		<c:forEach var="tecn"  items="${listaTecnologias}" >
 					 		<c:set var="tecn_ID" scope="request" value= "${tecn.tecnologia_ID}"/>
@@ -65,7 +65,7 @@
 				</tr>
 				<tr>
 					<td><html:checkbox property="chkTitulacion"></html:checkbox></td>
-					<th><label for="titu_ID">Titulación:</label></th>
+					<td><label for="titu_ID">Titulación:</label></td>
 				<!-- 	<td><html:text property="nombre_Tit" /></td> -->
 					<td align="left"><html:select property="titu_ID">
 				 		 <c:forEach var="titu"  items="${listaTitulaciones}" >
@@ -77,7 +77,7 @@
 				</tr>
 				<tr>
 					<td><html:checkbox property="chkExperiencia"></html:checkbox></td>
-					<th><label for="a_Experiencia">Años de experiencia:</label></th>
+					<td><label for="a_Experiencia">Años de experiencia:</label></td>
 					<td align="left"><html:text property="a_Experiencia" /></td>
 					<td><html:errors property="a_Experiencia" /></td>
 				</tr>

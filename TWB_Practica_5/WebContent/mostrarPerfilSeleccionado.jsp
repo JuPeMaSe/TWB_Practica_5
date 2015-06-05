@@ -16,7 +16,6 @@
 <head>
 	<link href="threeregion.css" rel="stylesheet" type="text/css" />
 	<jsp:useBean id="loginBean" class= "com.mistrutswebapp.beans.LoginBean" scope="session"></jsp:useBean>
-	
 	<title>Perfil seleccionado</title>
 </head>
 <body>
@@ -75,7 +74,7 @@
 	 						<c:forEach var="titu" items="${perfil.listaTit}">
 	 							<c:forEach var="titula" items="${listaTitulaciones}">
 		 							<c:if test="${titula.titulacion_ID == titu}">
-		 								<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
+		 								<tr><td>${titula.nombre_Tit}</td></tr>
 		 							</c:if>
 		 						</c:forEach>
 	 						</c:forEach>
@@ -104,7 +103,7 @@
 		 					<c:forEach var="tecn" items="${perfil.listaTec}">
 		 						<c:forEach var="tecnol" items="${listaTecnologias}">
 		 							<c:if test="${tecnol.tecnologia_ID == tecn}">
-		 								<tr><th>Tecnología: </th><td>${tecnol.nombre_Tec}</td></tr>
+		 								<tr><td>${tecnol.nombre_Tec}</td></tr>
 		 							</c:if>
 		 						</c:forEach>
 		 					</c:forEach>
@@ -118,13 +117,13 @@
 		</td></tr>
 		<tr><td>		  
 			<a href="javascript:history.back()">Volver</a>
-	  		<!-- <html:link action="home"><bean:message key="tohome.link" /></html:link>-->
-	  			<!-- 	<html:submit property="mostrar" value="Mostrar Perfil: ${perfil.profile_ID}"></html:submit>
+	  		<!--<html:link action="home"><bean:message key="tohome.link" /></html:link>-->
+	  			 <!--<html:submit property="mostrar" value="Mostrar Perfil: ${perfil.profile_ID}"></html:submit>
 	 				<html:submit property="accion" value="${perfil.profile_ID }"></html:submit>
 	 				<html:submit property="accion" value="Me gusta"></html:submit>
-	 				<html:submit property="accion" value="borrar"></html:submit>   -->		
-	 						
-	  	</td></tr>
+	 				<html:submit property="accion" value="borrar"></html:submit>   -->	
+	  	</td>
+	  	</tr>
 	  	</table> <!-- tabla 0 -->
 	  	
 	<!--    </html:form>  -->

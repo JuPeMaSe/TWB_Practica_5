@@ -32,11 +32,10 @@ public class EliminarPerfilAction extends Action {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request, HttpServletResponse response) {
 		
-		if (log.isInfoEnabled()) {
-			log.info("In EliminarPerfilAction");
-		}
+//		if (log.isInfoEnabled()) {
+//			log.info("In EliminarPerfilAction");
+//		}
 		HttpSession sesion = request.getSession();
-		PerfilBean perfilBean = (PerfilBean)sesion.getAttribute("perfilBean");
 		LoginBean loginBean = (LoginBean) sesion.getAttribute("loginBean");
 		EliminarPerfilesBean  ePB = (EliminarPerfilesBean)form;
 		int tamanio=0;
@@ -80,7 +79,7 @@ public class EliminarPerfilAction extends Action {
 
 			
 		}
-		log.info("In EliminarrPerfilAction --> finalizado");
+		//log.info("In EliminarrPerfilAction --> finalizado");
 		return mapping.findForward("Ok");
 
 	}

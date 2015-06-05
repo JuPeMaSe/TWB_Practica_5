@@ -80,7 +80,7 @@ public class ConsultaAction extends Action{
 // 			sesion.setAttribute("listaUsuarios", listaUsuarios);
  		//	return mapping.findForward("succes");
  		}
- 		
+ 		sesion.setAttribute("consultaBean", cB);
  		return mapping.findForward("succes");
 	 }
 }

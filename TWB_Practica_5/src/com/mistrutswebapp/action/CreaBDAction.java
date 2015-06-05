@@ -179,53 +179,9 @@ public class CreaBDAction extends Action {
               
               //crear la lista de países
               crearListaPaises();
-              
-	// Mostramos por pantalla todos los usuarios de la tabla  
-//            rst1 = st.executeQuery("SELECT * FROM Usuario");  
-//            while (rst1.next()){  
-//                log.info("In CreaBDAction --> Tabla Usuario: "+ rst1.getString("user_ID") + " " + rst1.getString("password") + " " + rst1.getString("nombre"));
-//                  
-//            }  
-            
-//            //Creamos la listaTitulaciones con scope=session
-//            rst1 = st.executeQuery("SELECT * FROM Titulacion");
-//            ArrayList<Titulacion> listaTitulaciones = new ArrayList<Titulacion>();
-//           // log.info("In CreaBDAction --> ");
-//            while (rst1.next()){ 
-//            	Titulacion tit = new Titulacion();
-//            	int ID = rst1.getInt("titulacion_ID");
-//            	String nom = rst1.getString("nombre_Tit"); 
-//            	tit.setTitulacion_ID(ID);
-//            	tit.setNombre_Tit(nom);
-//            	listaTitulaciones.add(tit);
-//              //  log.info("Tabla Titulación: "+	ID + " "+nom);  
-//            }
-//            sesion.setAttribute("listaTitulaciones",listaTitulaciones);
-//            
-//            //Creamos la listaTecnologias con scope=session
-//            rst1 = st.executeQuery("SELECT * FROM Tecnologia");
-//            ArrayList<Tecnologia> listaTecnologias = new ArrayList<Tecnologia>();
-//           // log.info("In CreaBDAction --> ");
-//            while (rst1.next()){ 
-//            	Tecnologia tec = new Tecnologia();
-//            	int ID = rst1.getInt("tecnologia_ID");
-//            	String nom = rst1.getString("nombre_Tec"); 
-//            	tec.setTecnologia_ID(ID);
-//            	tec.setNombre_Tec(nom);
-//            	listaTecnologias.add(tec);
-//             //   log.info("Tabla Tecnología: "+	ID + " "+nom);  
-//            }
-//            sesion.setAttribute("listaTecnologias",listaTecnologias);
-//           
-//            ArrayList<Perfil> listaPerfiles= (ArrayList<Perfil>)ModelFacade.getPerfiles("");
-//            sesion.setAttribute("listaPerfiles",listaPerfiles);
-//            ArrayList<Usuario> listaUsuarios= (ArrayList<Usuario>)ModelFacade.getUsuarios("");
-//            sesion.setAttribute("listaUsuarios",listaUsuarios);
-//              // Liberamos recursos y cerramos la conexion  
-//             st.close();  
-//              con.close();  
+
           } catch (Exception ex){  
-              log.error("BD no creada por --> "+ ex.getMessage());
+              log.error(" In CreaBDAction - Base de Datos no creada por --> "+ ex.getMessage());
           }
           log.info("In CreaBDAction --> Base de datos creada");
           return mapping.findForward("Ok");

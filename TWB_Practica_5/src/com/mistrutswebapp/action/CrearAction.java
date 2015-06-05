@@ -37,18 +37,11 @@ public class CrearAction extends Action {
 		perfilBean = (PerfilBean)form;
 		HttpSession sesion = request.getSession();
 		loginBean = (LoginBean)sesion.getAttribute("loginBean");
-		
-		//System.out.println("CrearAction - opcionSelec --> "+ sesion.getAttribute("opcionSelec"));
-
-		//System.out.println("Tamaño lista --> "+perfilBean.getListaTit().size());
 		String accion = perfilBean.getAccion();
-		//System.out.println("CrearAction. accion --> "+ accion);
-		//return mapping.findForward("succes");
 		if(accion.substring(0,13).equals("Eliminar Titu")){
 			int intClave = Integer.parseInt(accion.substring(20));
 			ArrayList<Integer>listaProv = new ArrayList<Integer>();
 			listaProv=perfilBean.getListaTit();				 
-			//System.out.println("eliminar titulación --> litaProv.size = "+perfilBean.getListaTit().size());
 			for (int i=0;i<listaProv.size();i++){
 				if(listaProv.get(i)==intClave){						
 					listaProv.remove(i);
@@ -149,12 +142,12 @@ public class CrearAction extends Action {
 			 if(formFileFoto != null && !formFileFoto.getFileName().equals("")) {  
 				  try { 
 				     path = getRepositoryPath() +  formFileFoto.getFileName();
-					  System.out.println("File will be uploaded to this path: " + path);
+					 // System.out.println("File will be uploaded to this path: " + path);
 					  perfilBean.setFotografia(formFileFoto.getFileName());
 					  outputStream = new FileOutputStream(new File(path));
 					  outputStream.write(formFileFoto.getFileData());				  
 				  } catch(Exception exception) {
-					  System.out.println(exception);
+					  System.out.println("En CrearAction - error --> " + exception.getMessage());
 				  }finally {
 				      if (outputStream != null) {
 				          try {
@@ -165,7 +158,7 @@ public class CrearAction extends Action {
 				          }
 				      }
 				  }
-				  System.out.println("The file " + formFileFoto.getFileName() + " was uploaded successfully.");
+				 // System.out.println("The file " + formFileFoto.getFileName() + " was uploaded successfully.");
 			 }
 			 return mapping.findForward("refresh");
 		}
@@ -185,13 +178,13 @@ public class CrearAction extends Action {
 			 if(formFilePdf != null && !formFilePdf.getFileName().equals("")) {  
 				  try { 
 				     path = getRepositoryPath() +  formFilePdf.getFileName();
-					  System.out.println("File will be uploaded to this path: " + path);
+					 // System.out.println("File will be uploaded to this path: " + path);
 					  perfilBean.setPdf(formFilePdf.getFileName());
 				     outputStream = new FileOutputStream(new File(path));
 				     outputStream.write(formFilePdf.getFileData());
 				  
 				  } catch(Exception exception) {
-				   System.out.println(exception);
+				   System.out.println("En CrearAction - error --> "+ exception.getMessage());
 				  }finally {
 				      if (outputStream != null) {
 				          try {
@@ -201,7 +194,7 @@ public class CrearAction extends Action {
 						}
 				      }
 				  }
-				  System.out.println("The file " + formFilePdf.getFileName() + " was uploaded successfully.");
+				  //System.out.println("The file " + formFilePdf.getFileName() + " was uploaded successfully.");
 			 }	
 			 return mapping.findForward("refresh");
 		}

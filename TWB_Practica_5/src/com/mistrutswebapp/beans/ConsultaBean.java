@@ -211,6 +211,14 @@ public class ConsultaBean extends ValidatorForm implements Serializable {
 		if(!this.isChkPais() && !this.isChkLocalidad() && !this.isChkProvincia() && !this.isChkTecnologia() && !this.isChkTitulacion() && !this.isChkExperiencia() ){
 			errors.add("consulta", new ActionMessage("error.consulta.seleccion"));
 		}
+		if(!this.a_Experiencia.isEmpty() && this.a_Experiencia!=""){
+			try{
+				a_Experiencia= a_Experiencia.trim();
+				Integer.parseInt(a_Experiencia.trim());
+			}catch(Exception e){
+				errors.add("a_Experiencia",new ActionMessage("error.numeroNoValido"));
+			}
+		}
 		return errors;
 	}
 	

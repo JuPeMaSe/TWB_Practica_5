@@ -25,6 +25,14 @@ import com.mistrutswebapp.model.Tecnologia;
 import com.mistrutswebapp.model.Titulacion;
 import com.mistrutswebapp.model.Usuario;
 
+
+/**
+ * Clase que añade datos de Usuarios, perfiles, titulaciones, tecnologías y experiencia
+ * de ejemplo para poder demostrar la funcionalidad de la aplicación
+ * @author Tecnologias Web Grupo 7/2015
+ * 
+ *
+ */
 public class AddUsuariosBDAction extends Action {
 	 private static Log log = LogFactory.getLog(AddUsuariosBDAction.class);
 	HttpSession sesion =null;
@@ -54,7 +62,7 @@ public class AddUsuariosBDAction extends Action {
              st.executeUpdate("INSERT INTO Usuario (user_ID, password, nombre, apellidos, tfno, email, userType) " +
              		"VALUES ('admin', 'admin',  'JP', 'MS','', '','adm')");              
              st.executeUpdate("INSERT INTO Usuario (user_ID, password, nombre, apellidos, tfno, email, userType) " +
-               		"VALUES ('jpms', '123',  'Juan Pedro', 'Marquez Sevilla','', '','usu')");
+               		"VALUES ('jpms', '123',  'Juan Pedro', 'Martinez Sanchez','', '','usu')");
              st.executeUpdate("INSERT INTO Usuario (user_ID, password, nombre, apellidos, tfno, email, userType) " +
                      "VALUES ('lperez', '123',  'Luis', 'Perez Gomez','123456789', 'lperez@ejemplo.com','usu')");
              st.executeUpdate("INSERT INTO Usuario (user_ID, password, nombre, apellidos, tfno, email, userType) " +
@@ -83,24 +91,7 @@ public class AddUsuariosBDAction extends Action {
              st.executeUpdate("INSERT INTO Perfil (profile_ID, pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
                       "VALUES (7,'',  '', 'Calle Corregidor','Granada', 'Andalucia','ES', 'mmanero', '')");
              
-            
-//             
-//             st.executeUpdate("INSERT INTO Perfil (direccion,	localidad, provincia, pais,	cont_MeGusta,user_ID) "+
-//           		  "VALUES('Plaza de la Villa, 1','Ubeda','Jaen','ES' ,0,'jpms')");
-//             
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                     "VALUES ('',  '', 'Gran Via','Oviedo', 'Asturias','ES', 'lperez', '')");
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                       "VALUES ('',  '', 'Avda. las acacias','Valencia', 'Valencia','ES', 'agarrido', '')");
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                     "VALUES ('',  '', 'Calle los lirios','Barcelona', 'Barcelona','ES', 'ecastedo', '')");
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                     "VALUES ('',  '', 'Calle Santander','Vigo', 'Galicia','ES', 'fsanchez', '')");
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                     "VALUES ('',  '', 'Avda. los pinos','Malaga', 'Andalucia','ES', 'mmanero', '')");
-//             st.executeUpdate("INSERT INTO Perfil (pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
-//                       "VALUES ('',  '', 'Calle Corregidor','Granada', 'Andalucia','ES', 'mmanero', '')");
-             
+
              
              st.executeUpdate("INSERT INTO Perfil_Tit (titulacion_ID, profile_ID)"+
            		  "VALUES(2,1)");
@@ -142,36 +133,7 @@ public class AddUsuariosBDAction extends Action {
            		  "VALUES(1,6)");
              st.executeUpdate("INSERT INTO Experiencia (empresa, cargo, a_Inicio, a_Fin, profile_ID) "+
            		  "VALUES('Bankia','Presidente',1960,1980,6)");
-             
-//             //Creamos la listaTitulaciones con scope=session
-//             rst1 = st.executeQuery("SELECT * FROM Titulacion");
-//             ArrayList<Titulacion> listaTitulaciones = new ArrayList<Titulacion>();
-//            // log.info("In CreaBDAction --> ");
-//             while (rst1.next()){ 
-//             	Titulacion tit = new Titulacion();
-//             	int ID = rst1.getInt("titulacion_ID");
-//             	String nom = rst1.getString("nombre_Tit"); 
-//             	tit.setTitulacion_ID(ID);
-//             	tit.setNombre_Tit(nom);
-//             	listaTitulaciones.add(tit);
-//               //  log.info("Tabla Titulación: "+	ID + " "+nom);  
-//             }
-//             sesion.setAttribute("listaTitulaciones",listaTitulaciones);
-//             
-//             //Creamos la listaTecnologias con scope=session
-//             rst1 = st.executeQuery("SELECT * FROM Tecnologia");
-//             ArrayList<Tecnologia> listaTecnologias = new ArrayList<Tecnologia>();
-//            // log.info("In CreaBDAction --> ");
-//             while (rst1.next()){ 
-//             	Tecnologia tec = new Tecnologia();
-//             	int ID = rst1.getInt("tecnologia_ID");
-//             	String nom = rst1.getString("nombre_Tec"); 
-//             	tec.setTecnologia_ID(ID);
-//             	tec.setNombre_Tec(nom);
-//             	listaTecnologias.add(tec);
-//              //   log.info("Tabla Tecnología: "+	ID + " "+nom);  
-//             }
-//             sesion.setAttribute("listaTecnologias",listaTecnologias);
+
             
              ArrayList<Perfil> listaPerfiles= (ArrayList<Perfil>)ModelFacade.getPerfiles("");
              sesion.setAttribute("listaPerfiles",listaPerfiles);

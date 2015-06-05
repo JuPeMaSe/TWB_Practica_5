@@ -19,10 +19,10 @@ public class PageHomeAction extends Action
   
   public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
   {
-    if (log.isInfoEnabled())
-    { 
-      log.info("In PageHomeAction");	
-    }
+//    if (log.isInfoEnabled())
+//    { 
+//      log.info("In PageHomeAction");	
+//    }
     
 	HttpSession sesion = request.getSession();
 	LoginBean loginBean = (LoginBean)sesion.getAttribute("loginBean");
@@ -51,18 +51,18 @@ public class PageHomeAction extends Action
 	}else {
 		opcionSelec="desconocido";
 	}
-	System.out.println("HomePage opcionSelec --> "+opcionSelec);
+	//System.out.println("HomePage opcionSelec --> "+opcionSelec);
 	sesion.setAttribute("opcionSelec", opcionSelec);
 
 	if (loginBean.getUser_ID() == null){
-		log.info("In PageHomeAction: usuario no registrado");
+		//log.info("In PageHomeAction: usuario no registrado");
 		//
 		return mapping.findForward("noRegistrado");
 	}else{
 //		ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();;
 //		listaPerfiles = (ArrayList<Perfil>)ModelFacade.getPerfiles("");
 //		sesion.setAttribute("listaPerfiles", listaPerfiles);
-		log.info("In PageHomeAction: usuario registrado: "+loginBean.getUser_ID());
+//		log.info("In PageHomeAction: usuario registrado: "+loginBean.getUser_ID());
 		ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();
 		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		if(loginBean.getUser_ID().equals("admin")){

@@ -7,7 +7,7 @@ public class ReferenceGenerator{
 		reference.append(user_ID);
 		int rand = (int)Math.floor(Math.random()*999);
 		reference.append(rand);
-		System.out.println("reference = " + reference.toString());
+		//System.out.println("reference = " + reference.toString());
 		return reference.toString();
 	}
 	

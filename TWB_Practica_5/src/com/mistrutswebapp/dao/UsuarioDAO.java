@@ -45,6 +45,7 @@ public class UsuarioDAO {
 			//log.info("In UsuarioDAO -->crearUsuario(usuario)-->try");
 			prepStatement.executeUpdate();
 		}catch(SQLException e){
+			log.error("En UsuarioDAO.crearUsuario error --> "+ e.getMessage());
 			e.printStackTrace();
 		}finally{
 			cleanUp();
@@ -90,10 +91,11 @@ public class UsuarioDAO {
 					usuario.setPerfiles(perfilDAO.leerPerfiles("where user_ID = '"+strUser_ID+"'"));	
 				}				
 				usuarios.add(usuario);
-				System.out.println("leido usuario -->"+strUser_ID);
+				//System.out.println("UsuarioDAO - leido usuario -->"+strUser_ID);
 			}//while
 		}catch(SQLException e){
-			log.error("error --> "+e.getMessage());
+			log.error("En UsuarioDAO.leerUsuarios - error --> "+e.getMessage());
+			e.printStackTrace();
 		}finally{
 		   cleanUp();
 		}
@@ -106,6 +108,7 @@ public class UsuarioDAO {
 			statement = connection.createStatement();
 			statement.executeUpdate("DELETE FROM Usuario WHERE user_ID ='" + usuario_ID + "'" );			
 		}catch(SQLException e){
+			log.error("En UsuarioDAO.eliminarUsuario - error --> "+e.getMessage());
 			e.printStackTrace();			
 		}finally{
 			cleanUp();			

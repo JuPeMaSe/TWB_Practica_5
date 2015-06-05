@@ -19,8 +19,33 @@ p {
 }
 
 table {
-	align:center
+	align:center;
+	border-collapse:collapse;
+	margin:auto;
 }
+
+
+th{
+	text-align:center;
+	background-color:rgb(153,200,255);
+	color:white;
+	border:1px black solid;
+}
+fieldset{
+/* 	margin: 20px; */
+/* 	padding: 20px; */
+/* 	background: #ffffff; */
+/* 	clear: both; */
+/* 	text-align: center; */
+	/**border-top: 2px solid black;*/
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-moz-box-shadow: rgb (94,123,204) 5px 5px;
+	-webkit-box-shadow: rgb (94,123,204) 5px 5px;
+	box-shadow: rgb (94,123,204) 5px 5px inset;
+}
+
 .heading {
 	text-align: center
 }
@@ -44,11 +69,6 @@ a:link {
 
 a:visited {
 	color: blue
-}
-
-th{
-	text-align:center;
-	color:blue;
 }
 
 .a {
@@ -125,7 +145,7 @@ th{
 
 #content {
 	margin-left: 1.1em;
-	margin-right: 8.1em;
+	margin-right: 1.1em;
 	text-align: center;
 	/*border: thick solid #000*/
 }

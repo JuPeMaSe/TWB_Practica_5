@@ -26,41 +26,25 @@
 	<html:form action="/processGrabar" enctype="multipartform-data">
 	<fieldset>
 	  <table border="0">
+	  	<tr><td>
+	  		<fieldset><legend>Perfil</legend>	
+					<table border="1">
 					<tr>
-						<th>Dirección</th>
+						<th>Dirección</th><th>Provincia</th><th>Pais</th><th>Pdf</th><th>Fotografía</th>
+						
+					</tr>
+					<tr>
 						<td><jsp:getProperty name="perfilBean" property="direccion"/></td>
-					</tr>
-					<tr>
-						<th>Provincia</th>
 						<td><jsp:getProperty name="perfilBean" property="provincia"/></td>
-					</tr>
-					<tr>
-						<th>Pais</th>
-						<td><jsp:getProperty name="perfilBean" property="pais"/></td>
-					</tr>
-					<tr>
-						<th>Pdf</th>
+						<td><jsp:getProperty name="perfilBean" property="pais"/></td>						
 						<td><jsp:getProperty name="perfilBean" property="pdf"/></td>
-					</tr>
-					<tr>
-						<th>Fotografía</th>
 						<td><jsp:getProperty name="perfilBean" property="fotografia"/></td>
-					</tr> 
-					<c:forEach var="titu" items="${perfilBean.listaTit}">
-						<c:forEach var="titula" items="${listaTitulaciones}">
-	 						<c:if test="${titula.titulacion_ID == titu}">
-	 							<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
-	 						</c:if>
-	 					</c:forEach>
-					</c:forEach>
-					<c:forEach var="tecn" items="${perfilBean.listaTec}" >
-						<c:forEach var="tecnol" items="${listaTecnologias}">
-	 						<c:if test="${tecnol.tecnologia_ID == tecn}">
-	 							<tr><th>Tecnología: </th><td>${tecnol.nombre_Tec}</td></tr>
-	 						</c:if>
-	 					</c:forEach>
-					</c:forEach>
+					</tr>
 					</table>
+			</fieldset>
+		</td>
+		<td>
+			<FIELDSET><LEGEND>Experiencia:</LEGEND>				
 					<table>
 					<jsp:setProperty name="perfilBean" property="listaExp" param="listaExp"/>
 					<tr>
@@ -73,9 +57,42 @@
 						<td><c:out value="${expe.a_Inicio}"/></td>
 						<td><c:out value="${expe.a_Fin}"/></td>
 						</tr>
-					</c:forEach>					
+					</c:forEach>
+					</table>
+			</FIELDSET>		
+			
+		</td></tr>
+		<tr>
+		<td>
+			<FIELDSET><legend>Titulaciones:</legend>
+				<table>
+					<c:forEach var="titu" items="${perfilBean.listaTit}">
+						<c:forEach var="titula" items="${listaTitulaciones}">
+	 						<c:if test="${titula.titulacion_ID == titu}">
+	 							<tr><td>${titula.nombre_Tit}</td></tr>
+	 						</c:if>
+	 					</c:forEach>
+					</c:forEach>
 				</table>
-			</fieldset>
+			</FIELDSET>
+		</td>
+		<td>
+			<FIELDSET><legend>Tecnologias:</legend>
+				<table>
+					<c:forEach var="tecn" items="${perfilBean.listaTec}" >
+						<c:forEach var="tecnol" items="${listaTecnologias}">
+	 						<c:if test="${tecnol.tecnologia_ID == tecn}">
+	 							<tr><td>${tecnol.nombre_Tec}</td></tr>
+	 						</c:if>
+	 					</c:forEach>
+					</c:forEach>
+				</table>
+			</FIELDSET>
+		</td>
+		
+		</tr>
+		</table>			
+		</fieldset>
 			<p></p>
 			<p><html:button property="atras" onclick="parent.location='crearPage.jsp'">Cancelar</html:button><html:submit>Confirmar</html:submit></p>
 		</html:form>

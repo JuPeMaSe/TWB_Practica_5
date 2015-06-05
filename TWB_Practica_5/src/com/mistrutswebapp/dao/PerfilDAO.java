@@ -82,7 +82,7 @@ public class PerfilDAO {
 		    connection = null;
 
 		 }catch(SQLException e){
-			 System.out.println("error crearPerfil:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error crearPerfil:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		 }finally{
 			cleanUp();
@@ -127,7 +127,7 @@ public class PerfilDAO {
 			connection=null;
 			
 		} catch (SQLException e) {
-			 System.out.println("error addTitulacion:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error addTitulacion:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		}finally{
 			cleanUp();
@@ -150,7 +150,7 @@ public class PerfilDAO {
 			connection=null;
 			
 		} catch (SQLException e) {
-			 System.out.println("error addTitulacion:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error addTitulacion:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		}finally{
 			cleanUp();
@@ -515,7 +515,7 @@ public class PerfilDAO {
 		    prepStatement = connection.prepareStatement("DELETE FROM Perfil WHERE profile_ID = "+ profile_ID);
 		    prepStatement.executeUpdate();
 		 }catch(SQLException e){
-			 System.out.println("error eliminarPerfil:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error eliminarPerfil:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		 }finally{
 			cleanUp();
@@ -528,7 +528,7 @@ public class PerfilDAO {
 			prepStatement = connection.prepareStatement("DELETE FROM Perfil_Tit WHERE profile_ID = "+ profile_ID);
 		     prepStatement.executeUpdate();
 		 }catch(SQLException e){
-			 System.out.println("error eliminarPerfil_Tit:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error eliminarPerfil_Tit:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		 }finally{
 			//cleanUp();
@@ -540,7 +540,7 @@ public class PerfilDAO {
 			prepStatement = connection.prepareStatement("DELETE FROM Perfil_Tec WHERE profile_ID = "+ profile_ID);
 		    prepStatement.executeUpdate();
 		 }catch(SQLException e){
-			 System.out.println("error eliminarPerfil_Tec:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error eliminarPerfil_Tec:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		 }finally{
 			//cleanUp();
@@ -552,7 +552,7 @@ public class PerfilDAO {
 			prepStatement = connection.prepareStatement("DELETE FROM Experiencia WHERE profile_ID = "+ profile_ID);
 		     prepStatement.executeUpdate();
 		 }catch(SQLException e){
-			 System.out.println("error eliminarExperiencia:SQL Exception -->"+e.getMessage());
+			 System.out.println("PerfilDAO - error eliminarExperiencia:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
 		 }finally{
 			cleanUp();
@@ -616,7 +616,7 @@ public class PerfilDAO {
 			}
 			statement.executeUpdate("DELETE FROM Experiencia WHERE profile_ID="+perfil.getProfile_ID());
 			if(perfil.getListaExp().isEmpty()){
-				System.out.println("Modificar perfil listaExp. is Empty()");
+				//System.out.println("PerfilDAO - Modificar perfil listaExp. is Empty()");
 			}else{
 				ArrayList<Experiencia> listaExpe = new ArrayList<Experiencia>();
 				listaExpe= perfil.getListaExp();
@@ -636,14 +636,14 @@ public class PerfilDAO {
 								listaExpe.get(i).getA_Inicio()+","+
 								listaExpe.get(i).getA_Fin()+ ","+
 								perfil.getProfile_ID()+")";
-						System.out.println("En modificarPerfil StrQuery -->  "+ strQuery);
+						//System.out.println("PerilDAO - En modificarPerfil StrQuery -->  "+ strQuery);
 						 statement.executeUpdate(strQuery);
 					}	
 				}
 				
 			}
 		} catch (SQLException e) {
-			System.out.println("Error SQL al modificar Perfil --> "+e.getMessage());
+			System.out.println("PerfilDAO - Error SQL al modificar Perfil --> "+e.getMessage());
 			e.printStackTrace();
 		}
 		 

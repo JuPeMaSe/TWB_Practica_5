@@ -39,7 +39,7 @@
 					<table border="1">
 						<tr><!-- <th>profile_ID</th>-->
 						<th>Dirección</th><th>Localidad</th><th>Provincia</th><th>Pais</th>
-						<th>Me gusta</th><th>PDF</th><th>Fotografia</th>
+						<th>PDF</th><th>Fotografia</th>
 						<!-- <th>user_ID</th> -->
 						</tr>
 	 					<tr><!-- <td>${perfil.profile_ID}</td> -->
@@ -47,7 +47,6 @@
 	 					<td>${perfil.localidad}</td>
 	 					<td>${perfil.provincia}</td>
 	 					<td>${perfil.pais}</td>
-	 					<td>${perfil.cont_MeGusta}</td>
 	 					<td>${perfil.pdf}</td>
 	 					<td>${perfil.fotografia}</td>
 	 					<!-- <td>${perfil.user_ID}</td>-->
@@ -64,7 +63,7 @@
  							<!-- <tr><td>titulacion_ID</td><td>${titu}</td></tr>  -->
  							<c:forEach var="titula" items="${listaTitulaciones}">
 	 							<c:if test="${titula.titulacion_ID == titu}">
-	 								<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
+	 								<tr><td>${titula.nombre_Tit}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
  						</c:forEach>
@@ -98,7 +97,7 @@
 	 						<!-- <tr><td>tecnologia_ID</td><td>${tecn}</td></tr>  -->
 	 						<c:forEach var="tecnol" items="${listaTecnologias}">
 	 							<c:if test="${tecnol.tecnologia_ID == tecn}">
-	 								<tr><th>Tecnología: </th><td>${tecnol.nombre_Tec}</td></tr>
+	 								<tr><td>${tecnol.nombre_Tec}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
 	 					</c:forEach>
@@ -109,9 +108,9 @@
 	 			<tr align="center">
 	 			<td colspan="2">
 	 			<table>
-	 				<td><html:submit property="mostrar" value="Mostrar Perfil: ${perfil.profile_ID}"></html:submit> </td>
+	 				<td><html:submit property="mostrar" title="Mostrar Perfil: ${perfil.profile_ID}" value="Mostrar Perfil: ${perfil.profile_ID}"></html:submit> </td>
 	 				<td>   *   *   *   </td>
-	 				<td><html:submit property="accion" value="Me gusta: ${perfil.profile_ID}"></html:submit></td>
+	 				<td><html:submit property="accion" title="Me gusta: ${perfil.profile_ID}" value="Me gusta: ${perfil.profile_ID}"></html:submit></td>
 	 			</table>
 	 			</td>
 	 			</tr>

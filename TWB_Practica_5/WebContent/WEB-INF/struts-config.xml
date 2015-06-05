@@ -71,7 +71,6 @@
  		   	scope="request"
  		   	validate="true"
  		   	input="/consultaPage.jsp" >
-<!--  		   	<forward name="succes" path="/resultadoConsulta.jsp" />    -->
 			<forward name="succes" path="/resultadoConsulta.jsp" /> 
  		   	<forward name="notfound" path="/notfound.jsp" />
 		</action>
@@ -82,6 +81,7 @@
  		   	validate="true"
  		   	input="/resultadoConsulta.jsp" >
 			<forward name="success" path="/mostrarPerfilSeleccionado.jsp" /> 
+			<forward name="refresh" path="/resultadoConsulta.jsp" />
  		   	<forward name="notfound" path="/notfound.jsp" />
 		</action>
 		<action path="/processlogin"
