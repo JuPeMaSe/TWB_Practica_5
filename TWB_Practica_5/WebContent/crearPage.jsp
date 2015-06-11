@@ -35,7 +35,16 @@
 			<!-- el action tendrá que ir hacia processCrear -->
 		<html:form action="/processCrear" enctype="multipart/form-data" >
 			
-			<fieldset><legend>Perfil del usuario : <jsp:getProperty property="user_ID" name="loginBean"/></legend>
+			<fieldset><legend>Perfil del usuario :
+				<c:choose>			
+					<c:when test="${perfilBean.user_ID== null}">
+						<jsp:getProperty property="user_ID" name="loginBean"/>
+					</c:when>
+					<c:otherwise>				
+						${perfilBean.user_ID}
+					</c:otherwise>
+				</c:choose> 
+				</legend>
 				<table>
 				<tr><th><label for="pais">País:</label></th> 
 <!--  				<td><html:text property="pais" /></td>    -->
@@ -110,7 +119,8 @@
 		 							<c:if test="${titula.titulacion_ID == titu}">
 		 								<tr><th>Titulación: </th>
 		 									<td>${titula.nombre_Tit}</td>
-		 								 	<td><html:submit property="accion" value="Eliminar Titulac. : ${titula.titulacion_ID}"></html:submit></td> 
+		 								 	<td><html:submit property="accion" value="Eliminar Titulac. : ${titula.titulacion_ID}"></html:submit></td>
+		 								 	<td></td> 
 		 								</tr>
 		 							</c:if>
 	 							</c:forEach>

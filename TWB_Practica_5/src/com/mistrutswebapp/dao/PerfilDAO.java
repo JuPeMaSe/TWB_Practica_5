@@ -1,6 +1,5 @@
 package com.mistrutswebapp.dao;
 
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +26,7 @@ public class PerfilDAO {
 	private ResultSet resTec= null;
 	private ResultSet resExp= null;
 	private PreparedStatement prepStatement = null;
-	private String strQuery="";
+	//private String strQuery="";
 	boolean bolPerfil=false;
 	boolean bolTitulos=false;
 	boolean bolTecnologias= false;
@@ -192,7 +191,7 @@ public class PerfilDAO {
 			   stExp = connection.createStatement();//Idem
 			   statement = connection.createStatement();
 			   results = statement.executeQuery("SELECT * FROM Perfil " + whereClause);
-//			   System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + whereClause);
+			  // System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + whereClause);
 			   int profile_ID;
 			   String pdf;
 			   String fotografia;
@@ -288,12 +287,13 @@ public class PerfilDAO {
 		   ArrayList<Integer> listaTit;
 		   ArrayList<Integer> listaTec;
 		   ArrayList<Experiencia> listaExp;
-		  ArrayList<Integer> listaPerfiles=new ArrayList<Integer>();
-		  ArrayList<Integer> listaAux=new ArrayList<Integer>();		   
+		   ArrayList<Integer> listadoPerfiles=new ArrayList<Integer>();
+		   ArrayList<Integer> listadoAux=new ArrayList<Integer>();
+		   ArrayList<Integer> listadoProvisional=new ArrayList<Integer>();
 		   Perfil perfil = null;
 		   try{
 			   getConnection();
-			   strQuery="";
+			  // strQuery="";
 			   stTit = connection.createStatement();//Se podría eliminar sin afectar al funcionamiento ????? Parece que no
 			   stTec = connection.createStatement();//Idem
 			   stExp = connection.createStatement();//Idem
@@ -305,122 +305,154 @@ public class PerfilDAO {
 			   }
 			   if(!strTitu.isEmpty()){
 				   resTit = stTit.executeQuery("SELECT * FROM Perfil_Tit "+strTitu);
-//					 System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil_Tit " +strTitu);
+					// System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil_Tit " +strTitu);
 					 while (resTit.next()){
-						 listaPerfiles.add(resTit.getInt("profile_ID"));
+						 listadoPerfiles.add(resTit.getInt("profile_ID"));
 					 }				   
+					// System.out.println("En PerfilDAO.leerPerfiles.Perfil_Tit listadoPerfiles.size --> "+listadoPerfiles.size());
 			   }
 			   if(!strTecn.isEmpty()){
-				   if(listaPerfiles.size()==0 && !strTitu.isEmpty()){
+				   if(listadoPerfiles.size()==0 && !strTitu.isEmpty()){
 						 return null;
 					 }
 				   
 				   resTec = stTec.executeQuery("SELECT * FROM Perfil_Tec "+ strTecn);
-//					 System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil_Tec " +strTecn);
+					// System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil_Tec " +strTecn);
 					
-					 if(listaPerfiles.size()==0){
+					 if(listadoPerfiles.size()==0){
 						 while(resTec.next()){
-							 listaPerfiles.add(resTec.getInt("profile_ID"));
+							 listadoPerfiles.add(resTec.getInt("profile_ID"));
 						 }
 					 }else{
 						 boolean encontrado = false;
 						while(resTec.next()){
-							 listaAux.add(resTec.getInt("profile_ID"));
+							 listadoAux.add(resTec.getInt("profile_ID"));
 						 }
-						for(int j=0; j<listaPerfiles.size();j++){
+						for(int j=0; j<listadoPerfiles.size();j++){
 							 encontrado = false;
-							 for (int i=0;i<listaAux.size();i++){
-								 if(listaPerfiles.get(j)==listaAux.get(i)){
+							 for (int i=0;i<listadoAux.size();i++){
+								// System.out.print("En PerfilDAO.Perfil_Tec: listadoPerfiles("+j+") -->"+ listadoPerfiles.get(j) + "||"
+								//		 + "listadoAux("+i+") --> "+listadoAux.get(i));
+								 if(listadoPerfiles.get(j)==listadoAux.get(i)){
 									 encontrado =true;
 								 }
+								 //System.out.println(" Encontrado = "+ encontrado);
 							 }
-							 if(encontrado==false){
-								 listaPerfiles.remove(j);
+							 if(encontrado==true){
+								 listadoProvisional.add(listadoPerfiles.get(j));
 							 }
 						 }
+						//System.out.println("En PerfilDAO.leerPerfiles.Perfil_Tec listadoPerfiles.size --> "+listadoPerfiles.size()
+						//		 + " listadoAux.size = "+ listadoAux.size() + " listadoProvisional.size = "+ listadoProvisional.size());
+						 listadoPerfiles.clear();
+						   for(int i =0;i<listadoProvisional.size();i++){
+							   listadoPerfiles.add(listadoProvisional.get(i));
+						   }
+						   listadoAux.clear();
+						   listadoProvisional.clear();
 					 }
+					
 			   }
 				  
-
+			  
 			   
 			   
 			   if(!strExpe.isEmpty()){
-				   if(listaPerfiles.size()==0 && (!strTitu.isEmpty() || !strTecn.isEmpty())){
+				   if(listadoPerfiles.size()==0 && (!strTitu.isEmpty() || !strTecn.isEmpty())){
 					   return null;
 				   }
 				   resExp = stExp.executeQuery("SELECT * FROM Experiencia ");// WHERE diferencia >= "+ strTecn);
-//					 System.out.println("SELECT * FROM Experiencia ");
-					 
-					 if(listaPerfiles.size()==0){
+					 //System.out.println("SELECT * FROM Experiencia ");					 
+					 if(listadoPerfiles.size()==0){
 						 while(resExp.next()){
 							 if(resExp.getInt("a_Fin")-resExp.getInt("a_Inicio")>= Integer.parseInt(strExpe)){
-								 listaPerfiles.add(resExp.getInt("profile_ID"));
-							 }
-							 
+								 listadoPerfiles.add(resExp.getInt("profile_ID"));
+							 }							 
 						 }
 					 }else{
 						 boolean encontrado = false;
 						while(resExp.next()){
 							if((resExp.getInt("a_Fin")-resExp.getInt("a_Inicio"))>= Integer.parseInt(strExpe)){
-								listaAux.add(resExp.getInt("profile_ID"));
+								listadoAux.add(resExp.getInt("profile_ID"));
 							}
 						 }
-						for(int j=0; j<listaPerfiles.size();j++){
+						for(int j=0; j<listadoPerfiles.size();j++){
 							 encontrado = false;
-							 for (int i=0;i<listaAux.size();i++){
-								 if(listaPerfiles.get(j)==listaAux.get(i)){
+							 for (int i=0;i<listadoAux.size();i++){
+								 //System.out.print("En PerfilDAO.Experiencia: listadoPerfiles("+j+") -->"+ listadoPerfiles.get(j) + "||"
+								//		 + "listadoAux("+i+") --> "+listadoAux.get(i));
+								 if(listadoPerfiles.get(j)==listadoAux.get(i)){
 									 encontrado =true;
 								 }
+								// System.out.println(" Encontrado = "+ encontrado);
 							 }
-							 if(encontrado==false){
-								 listaPerfiles.remove(j);
+							 if(encontrado==true){
+								 listadoProvisional.add(listadoPerfiles.get(j));
 							 }
 						 }
+						// System.out.println("En PerfilDAO.leerPerfiles.Perfil_Tec listadoPerfiles.size --> "+listadoPerfiles.size()
+							//	 + " listadoAux.size = "+ listadoAux.size() + " listadoProvisional.size = "+ listadoProvisional.size());
+						 listadoPerfiles.clear();
+						   for(int i =0;i<listadoProvisional.size();i++){
+							   listadoPerfiles.add(listadoProvisional.get(i));
+						   }
+						   listadoAux.clear();
+						   listadoProvisional.clear();
 					 }				   
 			   }
 			   
 			   
 			   if(!strPerfil.equals("") && (!strTitu.isEmpty()||!strTecn.isEmpty()||!strExpe.isEmpty())){
-				   	if(listaPerfiles.size()==0){
+				   	if(listadoPerfiles.size()==0){
 					   return null;
 					 }else{
 						 results = statement.executeQuery("SELECT * FROM Perfil " + strPerfil);
-//						   System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + strPerfil);
+						   //System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + strPerfil);
 						 boolean encontrado = false;
-						 listaAux= new ArrayList<Integer>();
+						 listadoAux= new ArrayList<Integer>();
 						 while(results.next()){
-							 listaAux.add(results.getInt("profile_ID"));
+							 listadoAux.add(results.getInt("profile_ID"));
 						 }
-						 for(int j=0; j<listaPerfiles.size();j++){
+						 for(int j=0; j<listadoPerfiles.size();j++){
 							 encontrado = false;
-							 for (int i=0;i<listaAux.size();i++){
-								 if(listaPerfiles.get(j)==listaAux.get(i)){
+							 for (int i=0;i<listadoAux.size();i++){
+								 //System.out.print("En PerfilDAO.Experiencia: listadoPerfiles("+j+") -->"+ listadoPerfiles.get(j) + "||"
+								//		 + "listadoAux("+i+") --> "+listadoAux.get(i));
+								 if(listadoPerfiles.get(j)==listadoAux.get(i)){
 									 encontrado =true;
 								 }
+								 //System.out.println(" Encontrado = "+ encontrado);
 							 }
-							 if(encontrado==false){
-								 listaPerfiles.remove(j);
+							 if(encontrado==true){
+								 listadoProvisional.add(listadoPerfiles.get(j));
 							 }
-							 bolPerfil=true;
-						 } //for
+						 }
+						 //System.out.println("En PerfilDAO.leerPerfiles.Experiencia listadoPerfiles.size --> "+listadoPerfiles.size()
+						//		 + " listadoAux.size = "+ listadoAux.size() + " listadoProvisional.size = "+ listadoProvisional.size());
+						 listadoPerfiles.clear();
+						   for(int i =0;i<listadoProvisional.size();i++){
+							   listadoPerfiles.add(listadoProvisional.get(i));
+						   }
+						   listadoAux.clear();
+						   listadoProvisional.clear();
 					 }//else		   
 			   }else if(!strPerfil.equals("") && strTitu.isEmpty() && strTecn.isEmpty() && strExpe.isEmpty()){
 				   results = statement.executeQuery("SELECT * FROM Perfil " + strPerfil);
 //				   System.out.println("En PerfilDAO.leerPerfiles. Claúsula --> "+ "SELECT * FROM Perfil " + strPerfil);
 				    while(results.next()){
-				    	listaPerfiles.add(results.getInt("profile_ID"));
+				    	listadoPerfiles.add(results.getInt("profile_ID"));
 					}
 				   
 			   }
 			
 			   
 			  
-			   if(listaPerfiles.size()==0){
+			   if(listadoPerfiles.size()==0){
 				   return null;
 			   }else{
-				   for(int i=0;i<listaPerfiles.size();i++){
-//					   System.out.println("listaPerfiles --> "+listaPerfiles.get(i));
-					   results= statement.executeQuery("SELECT * FROM Perfil where profile_ID = "+listaPerfiles.get(i));
+				   for(int i=0;i<listadoPerfiles.size();i++){
+//					   System.out.println("listadoPerfiles --> "+listadoPerfiles.get(i));
+					   results= statement.executeQuery("SELECT * FROM Perfil where profile_ID = "+listadoPerfiles.get(i));
 			   
 					   while(results.next()){						 
 						  	 profile_ID = results.getInt("profile_ID"); 

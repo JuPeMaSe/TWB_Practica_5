@@ -16,10 +16,13 @@
 			  <a class="a" href="consultaPage.jsp">P&aacute;gina Consulta</a>
 			 </span>
 			 <span class="topnavigationlink">
-			  <a class="a" href="contactoPage.htm">Contacta con nosotros</a>
+			  <a class="a" href="contactoPage.jsp">Contacta con nosotros</a>
 			 </span>
 			 <span class="topnavigationlink">
 			  <a class="a" href="ayudaPracticaTWB.htm" target="_blank">Ayuda</a>
+			 </span>
+			  <span class="topnavigationlink">
+			  <a class="a" href="./memoriaArchivos/MemoriasTW.pdf" target="_blank">Memoria de la práctica(PDF)</a>
 			 </span>
 		</div>
 	</td>

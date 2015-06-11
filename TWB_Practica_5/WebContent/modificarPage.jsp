@@ -53,7 +53,7 @@
  							<!-- <tr><td>titulacion_ID</td><td>${titu}</td></tr>  -->
  							<c:forEach var="titula" items="${listaTitulaciones}">
 	 							<c:if test="${titula.titulacion_ID == titu}">
-	 								<tr><th>Titulación: </th><td>${titula.nombre_Tit}</td></tr>
+	 								<tr><td>${titula.nombre_Tit}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
  						</c:forEach>
@@ -86,7 +86,7 @@
 	 						<!-- <tr><td>tecnologia_ID</td><td>${tecn}</td></tr>  -->
 	 						<c:forEach var="tecnol" items="${listaTecnologias}">
 	 							<c:if test="${tecnol.tecnologia_ID == tecn}">
-	 								<tr><th>Tecnología:</th><td>${tecnol.nombre_Tec}</td></tr>
+	 								<tr><td>${tecnol.nombre_Tec}</td></tr>
 	 							</c:if>
 	 						</c:forEach>
 	 					</c:forEach>
