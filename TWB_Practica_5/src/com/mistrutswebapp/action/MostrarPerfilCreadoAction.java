@@ -15,8 +15,22 @@ import org.apache.struts.action.ActionMapping;
 import com.mistrutswebapp.beans.PerfilBean;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Perfil;
-
+/**
+ * Muestra los datos finales del perfil que se está creando o modificando y que serán guardados en la base de datos.
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class MostrarPerfilCreadoAction extends Action {
+	/**
+	 * Obtiene los datos del perfilBean y los envia a ModelFacade.
+	 * Según se trate de modificación o creación de nuevo perfil, selecciona un método diferente en ModelFacade.
+	 * Una vez terminado pone listaPerfiles con visibilidad session y elimina de la session perfilBean.
+	 * @param mapping
+	 * @param form obtiene el javabean EliminarUsuariosBean
+	 * @param request se refiere al alcance request
+	 * @param response se refiere al alcance response	
+	 * @return succes 
+	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		

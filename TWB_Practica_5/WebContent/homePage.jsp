@@ -35,7 +35,7 @@
 	    	<p class="hp"><html:link action="fromhomeconsulta.do">Hacer una consulta </html:link></p>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adConsultar" value="true">
-	    	<p class="hp"><strong>Consulta de perfiles deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Consulta de perfiles (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    
 	    <!-- Opción de alta de usuario -->
@@ -45,7 +45,7 @@
 	    	</logic:empty>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adAltaUsuario" value="true">
-	    	<p class="hp"><strong>Alta de usuarios deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Alta de usuarios (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    
 	    <!-- Opción de baja de usuario -->
@@ -54,11 +54,11 @@
 	    		<p class="hp"><html:link action="fromhomebaja.do">Darse de baja como usuario</html:link></p>
 	    	</logic:notEmpty>
 	    	<logic:empty name="loginBean" property="user_ID"><!-- Un usuario anonimo no puede darse de baja -->
-	    		<p class="hp"><strong>Baja de usuarios inaccesible para un usuario anónimo</strong></p>
+	    		<p class="hp"><strong>Baja de usuarios (Inicie sesión para activar esta opción)</strong></p>
 	    	</logic:empty>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adBajaUsuario" value="true">
-	    	<p class="hp"><strong>Baja de usuarios deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Baja de usuarios (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    
 	    <!-- Opción de modificar un perfil -->
@@ -67,11 +67,11 @@
 	    		<p class="hp"><html:link action="fromhomemodificar.do">Modificar un perfil</html:link></p>
 	    	</logic:notEmpty>
 	    	<logic:empty name="loginBean" property="user_ID"><!-- Un usuario anonimo no puede modificar un perfil -->
-	    		<p class="hp"><strong>Modificar un perfil inaccesible para un usuario anónimo</strong></p>
+	    		<p class="hp"><strong>Modificar un perfil (Inicie sesión para activar esta opción)</strong></p>
 	    	</logic:empty>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adModificarPerfil" value="true">
-	    	<p class="hp"><strong>Modifica un perfil deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Modifica un perfil (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    
 	    <!-- Opción de eliminar un perfil -->
@@ -80,11 +80,11 @@
 	    		<p class="hp"><html:link action="fromhomeeliminar.do">Eliminar un perfil</html:link></p>
 	    	</logic:notEmpty>
 	    	<logic:empty name="loginBean" property="user_ID"><!-- Un usuario anonimo no puede eliminar un perfil -->
-	    		<p class="hp"><strong>Eliminar un perfil inaccesible para un usuario anónimo</strong></p>
+	    		<p class="hp"><strong>Eliminar un perfil (Inicie sesión para activar esta opción)</strong></p>
 	    	</logic:empty>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adEliminarPerfil" value="true">
-	    	<p class="hp"><strong>Eliminar un perfil deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Eliminar un perfil (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    
 	    <!-- Opción de crear un perfil -->
@@ -93,16 +93,16 @@
 	    		<p class="hp"><html:link action="fromhomecrear.do">Crear un perfil</html:link></p>
 	    	</logic:notEmpty>
 	    	<logic:empty name="loginBean" property="user_ID"><!-- Un usuario anonimo no puede crear un perfil -->
-	    		<p class="hp"><strong>Crear un perfil inaccesible para un usuario anónimo</strong></p>
+	    		<p class="hp"><strong>Crear un perfil (Inicie sesión para activar esta opción)</strong></p>
 	    	</logic:empty>
 	    </logic:equal>
 	    <logic:equal name="administrarBean" property="adCrearPerfil" value="true">
-	    	<p class="hp"><strong>Crear un perfil deshabilitada por el administrador</strong></p>
+	    	<p class="hp"><strong>Crear un perfil (deshabilitada por el administrador)</strong></p>
 	    </logic:equal>
 	    <!-- Opciones del administrador -->
 	   
 	    <logic:notPresent name="loginBean" property="user_ID">  
-            <p><strong>Para acceder a la función Administrar web, iniciar sesión con: usuario = admin contraseña = admin</strong></p>
+            <p><strong>Administrar web (Inicie sesión como administrador: usuario = admin contraseña = admin)</strong></p>
            <!--  <p><strong>Para acceder a la función Eliminar Usuarios, iniciar sesión con: usuario = admin contraseña = admin</strong></p>   -->
         </logic:notPresent>      
 	    <logic:equal name="loginBean" property="user_ID" value="admin">    	
@@ -115,6 +115,10 @@
 	    	<p>Normalmente en una página WEB normal no aparecerían como opciones ni serían visibles</p>	    
 	    	<p class="hp"><html:link action="mostrarBD.do">Mostrar Base de Datos</html:link></p>
 	    	<p class="hp"><html:link action="addUsuarios.do">Añadir usuarios a la Base de datos</html:link></p>
+	    	<p class="hp"><a href="ayudaPracticaTWB.htm" target="_blank">Ayuda en html</a></p>
+	    	<p class="hp"><a href="./memoriaArchivos/MemoriasTW.pdf" target="_blank">Ver la Memoria de la práctica en pdf</a></p>
+	    	<p class="hp"><a href="./doc/index.html" target="_blank">Javadoc de la práctica</a></p>
+	    	
 	    </FIELDSET>
 	    
 	    

@@ -17,7 +17,11 @@ import com.mistrutswebapp.beans.ConsultaBean;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Perfil;
 import com.mistrutswebapp.model.Usuario;
-
+/**
+ * Permite obtener una lista de perfiles que cumplen las condiciones seleccionadas en el formulario de consulta.
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class ConsultaAction extends Action{
 	 private static Log log = LogFactory.getLog(ConsultaAction.class);
 	 private ConsultaBean cB;
@@ -28,7 +32,15 @@ public class ConsultaAction extends Action{
 	 private String strTitu="";
 	 private String strExpe="";
 	 
-	 
+	 /**
+	  * Ejecuta las acciones necesarias para obtener la lista de perfiles que cumplan las condiciones seleccionadas
+	  * Utiliza ConsultaBean: es el bean que tiene los datos del formulario de consulta
+	  * @param mapping 
+	  * @param form obtiene el javabean
+	  * @param request se refiere al alcance request
+	  * @param response se refiere al alcance response
+	  * @return succes
+	  */
 	 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response){
 		 HttpSession sesion = request.getSession();
 	     ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();

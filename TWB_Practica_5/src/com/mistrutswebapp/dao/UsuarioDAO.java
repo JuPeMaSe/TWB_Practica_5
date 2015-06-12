@@ -19,6 +19,13 @@ import org.apache.commons.logging.LogFactory;
 import com.mistrutswebapp.action.PageHomeAction;
 import com.mistrutswebapp.model.Usuario;
 
+/**
+ * Clase que se utiliza como DAO (Data Access Object) para acceder a la base de datos.
+ * Permite la conexión con la base de datos y la creación, lectura, modificación y 
+ * borrado (operaciones CRUD)de los datos de la misma, referidos a los  usuarios.  
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class UsuarioDAO {
 	 private static Log log = LogFactory.getLog(PageHomeAction.class);
 	private Connection connection = null;
@@ -29,7 +36,10 @@ public class UsuarioDAO {
 	private static final String INSERT_STATEMENT = "INSERT INTO Usuario " +
 			"(user_ID,password,nombre,apellidos, tfno,email, userType)" +
 			" VALUES (?,?,?,?,?,?,?)";
-	
+	/**
+	 * Crea un usuarioen la base de datos con los datos del usuario pasado como argumento
+	 * @param usuario
+	 */
 	public void crearUsuario(Usuario usuario){
 		//log.info("In UsuarioDAO -->crearUsuario(usuario)");
 		try{
@@ -52,6 +62,12 @@ public class UsuarioDAO {
 		}
 	}
 	
+	/**
+	 * Realiza una consulta a la base de datos, devolviendo una colección de usuarios que coinciden 
+	 * con la condición pasada como parámetro.
+	 * @param whereClause
+	 * @return Collection<Usuario>
+	 */
 	public Collection<Usuario> leerUsuarios(String whereClause){
 		//log.info("In UsuarioDAO -->leerUsuarios(clause)");
 		Collection<Usuario> usuarios = new ArrayList<Usuario>();
@@ -102,6 +118,10 @@ public class UsuarioDAO {
 		return usuarios;
 	}
 	
+	/**
+	 * Elimina de la base de datos el usuario pasado como parámetro
+	 * @param usuario_ID
+	 */
 	public void eliminarUsuario(String usuario_ID){
 		try{
 			getConnection();
@@ -117,7 +137,9 @@ public class UsuarioDAO {
 
 	
 	
-	
+	/**
+	 * Establece la conexión con la base de datos
+	 */
 	private void getConnection(){
 		//log.info("In UsuarioDAO -->getConnection()");
 		if(connection == null){
@@ -133,7 +155,9 @@ public class UsuarioDAO {
 		}
 	 }
 	
-	
+	/**
+	 * Nos permite asegurarnos de cerrar results, statements y connections.
+	 */
 	private void cleanUp(){
 		 // nos aseguramos de cerrar results, statements , connections....
 		 if(results != null){

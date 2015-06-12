@@ -1,5 +1,10 @@
 package com.mistrutswebapp.action;
-
+/**
+ * Redirige a la página donde se muestra la base de datos.
+ * Para ello recoje los datos de usuarios en listaUsuarios, y los perfiles en listaPerfiles
+ * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ */
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -26,7 +31,14 @@ import com.mistrutswebapp.model.Usuario;
 
 public class MostrarBDAction extends Action {
 	 private static Log log = LogFactory.getLog(LoginAction.class);
-	
+	/**
+	 * Obtiene la lista de usuarios y perfiles en la base de datos y les adjudica visión a nivel de session.
+	 * @param mapping
+	 * @param form obtiene el javabean EliminarUsuariosBean
+	 * @param request se refiere al alcance request
+	 * @param response se refiere al alcance response	 
+	 * @return Ok
+	 */
 	 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 	 { 
 //		  if (log.isInfoEnabled())

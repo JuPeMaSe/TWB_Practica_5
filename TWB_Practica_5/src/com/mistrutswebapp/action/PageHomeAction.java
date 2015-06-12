@@ -12,18 +12,32 @@ import com.mistrutswebapp.beans.LoginBean;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Perfil;
 import com.mistrutswebapp.model.Usuario;
-
+/**
+ * Controla si el usuario se ha registrado, si no lo ha hecho o si se trata del administrador, para permitir el acceso a determinadas opciones.
+ * Además establece la lista de perfiles y lista de usuarios en la session
+ * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class PageHomeAction extends Action
 {
   private static Log log = LogFactory.getLog(PageHomeAction.class);
-  
-  public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-  {
-//    if (log.isInfoEnabled())
-//    { 
-//      log.info("In PageHomeAction");	
-//    }
-    
+  /**
+   * Ejecuta las comprobaciones necesarias para saber si el usuario está registrado o no.
+   * En función de esa comprobación direccionará la página a una u otra página.
+   * En función del link seleccionado se guarda la opción seleccionada en una varible con alcance session, 
+   * que será utilizada posteriormente por la aplicación.
+   * También actualiza la lista de perfiles y usuarios en función del usuario registrado
+   * @param mapping
+   * @param form obtiene el javabean EliminarUsuariosBean	
+   * @param request se refiere al alcance request
+   * @param response se refiere al alcance response		
+   * @return <p>no registrado (El usuario no se ha registrado todavía) </p> 
+   * <p>registrado (El usuario ya se ha registrado con un usuario válido) </p>
+   * <p>admin (El usuario se ha registrado como administrador)</p>  
+   */
+  public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response){
+	  
 	HttpSession sesion = request.getSession();
 	LoginBean loginBean = (LoginBean)sesion.getAttribute("loginBean");
 	String opcionSelec ="";
@@ -56,13 +70,8 @@ public class PageHomeAction extends Action
 
 	if (loginBean.getUser_ID() == null){
 		//log.info("In PageHomeAction: usuario no registrado");
-		//
 		return mapping.findForward("noRegistrado");
 	}else{
-//		ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();;
-//		listaPerfiles = (ArrayList<Perfil>)ModelFacade.getPerfiles("");
-//		sesion.setAttribute("listaPerfiles", listaPerfiles);
-//		log.info("In PageHomeAction: usuario registrado: "+loginBean.getUser_ID());
 		ArrayList<Perfil> listaPerfiles = new ArrayList<Perfil>();
 		ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
 		if(loginBean.getUser_ID().equals("admin")){

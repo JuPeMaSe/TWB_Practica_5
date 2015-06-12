@@ -14,7 +14,13 @@ import javax.sql.DataSource;
 
 import com.mistrutswebapp.model.Experiencia;
 import com.mistrutswebapp.model.Perfil;
-
+/**
+ * Clase que se utiliza como DAO (Data Access Object) para acceder a la base de datos.
+ * Permite la conexión con la base de datos y la creación, lectura, modificación y 
+ * borrado (operaciones CRUD)de los datos de la misma, referidos a los perfiles. 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class PerfilDAO {
 	private Connection connection = null;
 	private Statement statement = null;
@@ -46,7 +52,9 @@ public class PerfilDAO {
 	private static final String INSERT_STATEMENT_EXPERIENCIA = "INSERT INTO Experiencia " +
 			"(empresa, cargo, a_Inicio, a_Fin, profile_ID) VALUES (?,?,?,?,?)";
 	
-
+	/**
+	 * Establece la conexión con la base de datos
+	 */
 	private void getConnection(){
 		if(connection == null){
 			try{
@@ -60,7 +68,11 @@ public class PerfilDAO {
 			}
 		}
 	 }
-	  
+	 
+	/**
+	 * Crea un perfil nuevo en la base de datos
+	 * @param perfil
+	 */
 	 public void crearPerfil(Perfil perfil){
 		 try{
 			getConnection();
@@ -79,7 +91,6 @@ public class PerfilDAO {
 		    prepStatement = null;
 		    connection.close();
 		    connection = null;
-
 		 }catch(SQLException e){
 			 System.out.println("PerfilDAO - error crearPerfil:SQL Exception -->"+e.getMessage());
 			 e.printStackTrace();
@@ -88,6 +99,11 @@ public class PerfilDAO {
 		 }
 	}
 	 
+	 /**
+	  * Devuelve el identificador de un perfil
+	  * @param perfil
+	  * @return profile_ID
+	  */
 	 public int getProfile_ID(Perfil perfil){
 		 int intProfile_ID=0;
 		 getConnection();
@@ -104,11 +120,16 @@ public class PerfilDAO {
 		    } catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		 
+			}		 
 		 return intProfile_ID;
 	 }
 	 
+	 /**
+	  * Añade las titulaciones correspondientes a un perfil, en la tabla perfil_Tit, que relaciona
+	  * las titulaciones con su perfil.
+	  * @param profile_ID
+	  * @param perfil
+	  */
 	 public void addTitulacion(int profile_ID, Perfil perfil){
 		 ArrayList<Integer> listaTit = perfil.getListaTit();
 		// System.out.println("En perfilDAO: addTitulacion --> listaTit.size == " + listaTit.size());
@@ -133,6 +154,12 @@ public class PerfilDAO {
 		}	 
 	 }
 	 
+	 /**
+	  * Añade las tecnologías correspondientes a un perfil, en la tabla perfil_Tec, que relaciona
+	  * las tecnologías con su perfil.
+	  * @param profile_ID
+	  * @param perfil
+	  */
 	 public void addTecnologia(int profile_ID, Perfil perfil){
 		 ArrayList<Integer> listaTec = perfil.getListaTec();
 		 try {
@@ -156,6 +183,12 @@ public class PerfilDAO {
 		}	 
 	 }
 	 
+	 /**
+	  * Añade las experiencias correspondientes a un perfil, en la tabla Experiencia, que relaciona
+	  * las experiencias con un perfil.
+	  * @param profile_ID
+	  * @param experiencia
+	  */
 	 public void addExperiencia(int profile_ID, Experiencia experiencia){
 		try {
 			getConnection();
@@ -180,8 +213,12 @@ public class PerfilDAO {
 		 
 		 
 	 }
-
-
+	
+	/**
+	 * Devuelve los perfiles que coinciden con la claúsula SQL pasada como parámetro
+	 * @param whereClause
+	 * @return Collection>Perfil>
+ */
 	 public Collection<Perfil> leerPerfiles(String whereClause){
 		   Collection<Perfil> perfiles = new ArrayList<Perfil>();
 		   try{
@@ -268,10 +305,14 @@ public class PerfilDAO {
 	 
 	 
 	 /**
-	  * Modificación método de obtener todos los perfiles que cumplen alguna condición
-	  * para Titulación, Tecnología y Experiencia
+	  * Sobrecarga del método leerPerfiles que devuelve todos los perfiles que coinciden con cada una de las claúsulas SQL
+	  * pasadas como parámetros para Perfil, Titulación, Tecnología y Experiencia
+	  * @param strPerfil
+	  * @param strTitu
+	  * @param strTecn
+	  * @param strExpe
+	  * @return Collection<Perfil>
 	  */
-	 
 	 public Collection<Perfil> leerPerfiles(String strPerfil, String strTitu, String strTecn, String strExpe){
 		   Collection<Perfil> perfiles = new ArrayList<Perfil>();
 		   int profile_ID;
@@ -352,10 +393,7 @@ public class PerfilDAO {
 						   listadoProvisional.clear();
 					 }
 					
-			   }
-				  
-			  
-			   
+			   } 
 			   
 			   if(!strExpe.isEmpty()){
 				   if(listadoPerfiles.size()==0 && (!strTitu.isEmpty() || !strTecn.isEmpty())){
@@ -514,7 +552,10 @@ public class PerfilDAO {
 	    return perfiles;
 	 }
 	 
-	 
+	 /**
+	  * Elimina los perfiles asociados a un determinado usuario
+	  * @param usuario_ID
+	  */
 	 public void eliminarPerfilesUsuario(String usuario_ID){		 
 		 try{
 			 getConnection();
@@ -539,7 +580,10 @@ public class PerfilDAO {
 	 }
 
 	 
-	 
+	 /**
+	  * Elimina un determinado perfil que coincide con el identificador del perfil pasado como parámetro.
+	  * @param profile_ID
+	  */
 	 public void eliminarPerfil(int profile_ID){
 		 
 		 try{
@@ -554,6 +598,11 @@ public class PerfilDAO {
 		 }
 	}
 
+	 /**
+	  * Elimina de la base de datos las titulaciones asociadas a un determinado perfil 
+	  * cuyo identificador es pasado como parámetro
+	  * @param profile_ID
+	  */
 	 public void eliminarPerfil_Tit(int profile_ID){
 		 try{
 			getConnection();
@@ -566,6 +615,12 @@ public class PerfilDAO {
 			//cleanUp();
 		 }
 	}
+	 
+	 /**
+	  * Elimina de la base de datos las tecnologías asociadas a un determinado perfil 
+	  * cuyo identificador es pasado como parámetro
+	  * @param profile_ID
+	  */
 	 public void eliminarPerfil_Tec(int profile_ID){
 		 try{
 			getConnection();			
@@ -578,6 +633,11 @@ public class PerfilDAO {
 			//cleanUp();
 		 }
 	}
+	 /**
+	  * Elimina de la base de datos las experiencias asociadas a un determinado perfil 
+	  * cuyo identificador es pasado como parámetro
+	  * @param profile_ID
+	  */
 	 public void eliminarExperiencia(int profile_ID){
 		 try{
 			getConnection();
@@ -591,6 +651,10 @@ public class PerfilDAO {
 		 }
 	}
 	 
+	 /**
+	  * Incrementa en una unidad el contador de "Me gusta" de un perfil pasado como parámetro
+	  * @param intProfile_ID
+	  */
 	 public void addMegusta(int intProfile_ID){
 		 try{
 			 getConnection();
@@ -607,7 +671,10 @@ public class PerfilDAO {
 		 }
 	 }
 	 
-	 
+	 /**
+	  * Modifica en la base de datos el perfil con los datos del mismo pasado como parámetro
+	  * @param perfil
+	  */
 	 public void modificarPerfil(Perfil perfil){
 		 getConnection();
 		 try {
@@ -677,11 +744,14 @@ public class PerfilDAO {
 		} catch (SQLException e) {
 			System.out.println("PerfilDAO - Error SQL al modificar Perfil --> "+e.getMessage());
 			e.printStackTrace();
-		}
-		 
-		 
+		}	 
 	 }
 	 
+	 /**
+	  * Devuelve el identificador único de usuario
+	  * @param profile_ID
+	  * @return user_ID
+	  */
 	 public String getUser_ID(int profile_ID) {
 		 String strUser_ID="";
 		 getConnection();		 
@@ -698,7 +768,9 @@ public class PerfilDAO {
 			return strUser_ID;
 		}
 
-	 
+	 /**
+	  * Cierra los results, statements y connections abiertas.
+	  */
 	 private void cleanUp(){
 		 // nos aseguramos de cerrar results, statements , connections...
 		 if(results != null){

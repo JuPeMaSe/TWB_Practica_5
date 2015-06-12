@@ -1,11 +1,18 @@
 package com.mistrutswebapp.model;
 
 import java.io.Serializable;
-
+/**
+ * Clase que guarda las Titulaciones disponibles para insertarlas en un perfil
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class Titulacion implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int titulacion_ID;
 	String nombre_Tit;
+	/**
+	 * Constructor
+	 */
 	public Titulacion(){
 		super();
 	}

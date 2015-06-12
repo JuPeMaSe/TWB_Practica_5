@@ -22,15 +22,27 @@ import com.mistrutswebapp.beans.LoginBean;
 import com.mistrutswebapp.beans.PerfilBean;
 import com.mistrutswebapp.model.Experiencia;
 
-
+/**
+ * Crea un perfil añadiendo los datos introducidos en el formulario.
+ * Utiliza perfilBean para guardar dichos datos 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class CrearAction extends Action {
 	private static Log log = LogFactory.getLog(CrearAction.class);
 	private PerfilBean perfilBean;
 	private LoginBean loginBean;
-//	private TitulacionBean titulacionBean;
-//	private TecnologiaBean tecnologiaBean;
-//	private ExperienciaBean experienciaBean;
 
+
+	/**
+	 * Ejecuta las acciones adecuadas para almacenar en perfilBean los datos introducidos en el formulario 
+	 * @param mapping 
+	 * @param form obtiene el javabean
+	 * @param request se refiere al alcance request
+	 * @param response se refiere al alcance response
+	 * @return <p>refresh (Refresca la página con las titulaciones, tecnologías, experiencias, ficheros pdf o fotografías introducidas)</p>
+	 * <p>succes (Envía a la página de confirmación de los datos introducidos en el formulario)</p>
+	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		
@@ -38,6 +50,7 @@ public class CrearAction extends Action {
 		HttpSession sesion = request.getSession();
 		loginBean = (LoginBean)sesion.getAttribute("loginBean");
 		String accion = perfilBean.getAccion();
+		//Elimina una titulación del perfil y refresca la página
 		if(accion.substring(0,13).equals("Eliminar Titu")){
 			int intClave = Integer.parseInt(accion.substring(20));
 			ArrayList<Integer>listaProv = new ArrayList<Integer>();
@@ -51,6 +64,7 @@ public class CrearAction extends Action {
 			return mapping.findForward("refresh");				 
 		}
 		
+		//Añade una titulación al perfil y refresca la página
 		if(accion.substring(0,13).equals("Nueva Titulac")){
 			int Titu = perfilBean.getTitulacion_ID();
 			if (Titu!=0){
@@ -59,7 +73,7 @@ public class CrearAction extends Action {
 //			System.out.println("pulsado Nueva Titu--> " +perfilBean.getTitulacion_ID());
 			return mapping.findForward("refresh");
 		}
-		
+		//Elimina una tecnología del perfil y refresca la página
 		if(accion.substring(0,13).equals("Eliminar Tecn")){			 
 			 int intClave = Integer.parseInt(accion.substring(20));
 			 ArrayList<Integer>listaProv = new ArrayList<Integer>();
@@ -73,7 +87,7 @@ public class CrearAction extends Action {
 			 perfilBean.setListaTec(listaProv);
 			 return mapping.findForward("refresh");
 		 }
-		
+		//Añade una tecnología al perfil y refresca la página
 		if(accion.substring(0,13).equals("Nueva Tecnolo")){
 			 int Tecn = perfilBean.getTecnologia_ID();
 			 if(Tecn!=0){
@@ -82,7 +96,7 @@ public class CrearAction extends Action {
 //			 System.out.println("pulsado Nueva Titu--> " +perfilBean.getTitulacion_ID());
 			 return mapping.findForward("refresh");
 		}
-		
+		//Elimina una experiencia del perfil y refresca la página
 		if(accion.substring(0,13).equals("Eliminar Expe")){
 			int intClave = Integer.parseInt(accion.substring(20));
 			 ArrayList<Experiencia>listaProv = new ArrayList<Experiencia>();
@@ -92,18 +106,12 @@ public class CrearAction extends Action {
 				 if(perfilBean.getListaExp().get(i).getExp_ID()==intClave){
 					 listaProv.remove(i);
 				 }
-			 }
-			 
+			 }			 
 			 perfilBean.setListaExp(listaProv);
 			 return mapping.findForward("refresh");
 		 }
-		 
+		//Añade una experiencia al perfil y refresca la página 
 		if(accion.substring(0,13).equals("Nueva Experie")){
-//			if(!mpmb.getEmpresa().isEmpty()){
-//				 String empresa = mpmb.getEmpresa();
-//				 String cargo = mpmb.getCargo();
-//				 int a_Inicio = mpmb.getA_Inicio();
-//				 int a_Fin = mpmb.getA_Fin();
 			if(!perfilBean.getEmpresa().isEmpty()){
 				 String empresa = perfilBean.getEmpresa();
 				 String cargo = perfilBean.getCargo();
@@ -118,21 +126,17 @@ public class CrearAction extends Action {
 				 expe.setExp_ID(perfilBean.getListaExp().size()+1);
 				 perfilBean.getListaExp().add(expe);
 				// System.out.println("pulsado Nueva Exp size()--> "+ perfilBean.getListaExp().size());	
-				 //mpmb.resetExper();
 				 //perfilBean.resetExper();
-			}
-			 
+			}			 
 			 return mapping.findForward("refresh");
 		}
-
-		 
-		
+		//Elimina una foto del perfil y refresca la página
 		if(accion.substring(0,13).equals("Eliminar Foto")){			
 			perfilBean.setFotografia("");
 			 return mapping.findForward("refresh");
 		 }
 		
-		
+		//Añade una foto al perfil y refresca la página
 		if(accion.substring(0,13).equals("Nueva Fotogra")){
 			//Me guarda el archivo en la dirección que el servlet tiene definida en su contexto
 			 FileOutputStream outputStream = null;
@@ -162,15 +166,14 @@ public class CrearAction extends Action {
 			 }
 			 return mapping.findForward("refresh");
 		}
-		
-		
-
+		//Elimina un archivo pdf del perfil y refresca la página
 		if(accion.substring(0,13).equals("Eliminar Arch")){			
 			perfilBean.setPdf("");
 			 return mapping.findForward("refresh");
 		 }
-		
+		//Añade un archivo pdf y refresca la página
 		if(accion.substring(0,13).equals("Nuevo Archivo")){
+			//Me guarda el archivo en la dirección que el servlet tiene definida en su contexto
 			 FileOutputStream outputStream = null;
 			 FormFile formFilePdf = null;
 			 String path="";
@@ -207,16 +210,16 @@ public class CrearAction extends Action {
 			perfilBean.setPdf("");
 		}
 		 perfilBean.setUser_ID(loginBean.getUser_ID());
+		 //Asigna este perfilBean a la session
 		 sesion.setAttribute("perfilBean", perfilBean);
 		return mapping.findForward("succes");
 	}
-//		/**
-//		 * This path where the file will be uploaded is put in a method to allow
-//		 * classes extending to be able to override it.
-//		 * @return
-//		 */
-		private String getRepositoryPath(){
+	/**
+	 * Devuelve la ruta del contexto actual de la página
+	 * @return contextoActual
+	 */
+	private String getRepositoryPath(){
 			return getServlet().getServletContext().getRealPath("")+"/";
-		}
+	}
 //		
 }

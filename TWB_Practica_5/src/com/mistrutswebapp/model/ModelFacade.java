@@ -13,9 +13,8 @@ import com.mistrutswebapp.dao.PerfilDAO;
 import com.mistrutswebapp.dao.UsuarioDAO;
 /**
  * Esta clase sirve de intermediario entre el modelo y la Base de Datos, interactuando con los DAO correspondientes.
- * Contiene métodos que permitirán crear, modificar, actualizar y borrar datos en la Base de Datos
- * 
- * @author Usuario
+ * Contiene métodos que permitirán crear, modificar, actualizar y borrar datos en la Base de Datos * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
  *
  */
 public class ModelFacade {
@@ -122,7 +121,7 @@ public class ModelFacade {
 	 * @param strTitu
 	 * @param strTecn
 	 * @param strExpe
-	 * @return
+	 * @return Collection<Perfil>
 	 */
 	public static Collection<Perfil> getPerfiles(String strPerfil, String strTitu, String strTecn, String strExpe){
 		if(strPerfil == null){

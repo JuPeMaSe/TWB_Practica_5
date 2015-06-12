@@ -29,14 +29,20 @@ import com.mistrutswebapp.model.Usuario;
 /**
  * Clase que añade datos de Usuarios, perfiles, titulaciones, tecnologías y experiencia
  * de ejemplo para poder demostrar la funcionalidad de la aplicación
- * @author Tecnologias Web Grupo 7/2015
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
  * 
- *
  */
 public class AddUsuariosBDAction extends Action {
 	 private static Log log = LogFactory.getLog(AddUsuariosBDAction.class);
 	HttpSession sesion =null;
-	
+	/**
+	 * Ejecuta las acciones necesarias para añadir los casos de ejemplo a la base de datos
+	 * @param mapping 
+	 * @param form obtiene el javabean
+	 * @param request se refiere al alcance request
+	 * @param response se refiere al alcance response
+	 * @return success
+	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
 		 sesion=request.getSession();
@@ -74,8 +80,6 @@ public class AddUsuariosBDAction extends Action {
              st.executeUpdate("INSERT INTO Usuario (user_ID, password, nombre, apellidos, tfno, email, userType) " +
                      "VALUES ('mmanero', '123',  'Miguel', 'Manero Haro','567890123', 'mmanero@ejemplo.com','usu')");
              
-             
-             
              st.executeUpdate("INSERT INTO Perfil (profile_ID, pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
                      "VALUES (1,'',  '', 'Plaza de la Villa, 1','Ubeda', 'Jaen','ES', 'jpms', '')");
              st.executeUpdate("INSERT INTO Perfil  (profile_ID, pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
@@ -90,8 +94,6 @@ public class AddUsuariosBDAction extends Action {
                      "VALUES (6,'',  '', 'Avda. los pinos','Malaga', 'Andalucia','ES', 'mmanero', '')");
              st.executeUpdate("INSERT INTO Perfil (profile_ID, pdf, fotografia, direccion, localidad, provincia, pais, user_ID, reference) " +
                       "VALUES (7,'',  '', 'Calle Corregidor','Granada', 'Andalucia','ES', 'mmanero', '')");
-             
-
              
              st.executeUpdate("INSERT INTO Perfil_Tit (titulacion_ID, profile_ID)"+
            		  "VALUES(2,1)");
@@ -115,15 +117,13 @@ public class AddUsuariosBDAction extends Action {
            		  "VALUES(1,3)");
              st.executeUpdate("INSERT INTO Perfil_Tec (tecnologia_ID, profile_ID)"+
            		  "VALUES(4,3)");
-
              
              st.executeUpdate("INSERT INTO Perfil_Tit (titulacion_ID, profile_ID)"+
            		  "VALUES(3,4)");
              st.executeUpdate("INSERT INTO Perfil_Tec (tecnologia_ID, profile_ID)"+
            		  "VALUES(1,4)");
              st.executeUpdate("INSERT INTO Experiencia (empresa, cargo, a_Inicio, a_Fin, profile_ID) "+
-           		  "VALUES('UPSA','Jefe Proyecto',1990,2010,4)");
-             
+           		  "VALUES('UPSA','Jefe Proyecto',1990,2010,4)");             
              
              st.executeUpdate("INSERT INTO Perfil_Tit (titulacion_ID, profile_ID)"+
            		  "VALUES(2,6)");
@@ -133,7 +133,6 @@ public class AddUsuariosBDAction extends Action {
            		  "VALUES(1,6)");
              st.executeUpdate("INSERT INTO Experiencia (empresa, cargo, a_Inicio, a_Fin, profile_ID) "+
            		  "VALUES('Bankia','Presidente',1960,1980,6)");
-
             
              ArrayList<Perfil> listaPerfiles= (ArrayList<Perfil>)ModelFacade.getPerfiles("");
              sesion.setAttribute("listaPerfiles",listaPerfiles);
@@ -141,7 +140,7 @@ public class AddUsuariosBDAction extends Action {
              sesion.setAttribute("listaUsuarios",listaUsuarios);
                // Liberamos recursos y cerramos la conexion  
               st.close();  
-               con.close();  
+              con.close();  
              
          } catch (Exception ex){  
              log.error("BD no creada por --> "+ ex.getMessage());

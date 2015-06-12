@@ -14,42 +14,121 @@ import org.apache.struts.upload.FormFile;
 import org.apache.struts.validator.ValidatorForm;
 
 import com.mistrutswebapp.model.Experiencia;
-
+/**
+ * <p>Extiende la clase ValidatorForm. Representa un objeto javabean, con los atributos
+ * correspondientes a todos los campos de un perfil de un usuario, que se completan en
+ * el formulario crearPage.jsp</p>
+ * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class PerfilBean extends ValidatorForm implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Campo con el ID del perfil del usuario
+	 */
 	private int profile_ID;
+	/**
+	 * Identificador del currículum en pdf del perfil
+	 */
 	private String pdf; //a cambiar el tipo para almacenar pdf
+	/**
+	 * Currículum del perfil en pdf
+	 */
 	private FormFile pdf_file;
+	/**
+	 * Identificador de la fotografía del perfil
+	 */
 	private String fotografia;//a cambiar el tipo para almacenar jpeg, bmp...
+	/**
+	 * Fotografía del perfil
+	 */
 	private FormFile fotografia_file;
+	/**
+	 * Campo con la dirección del perfil del usuario
+	 */
 	private String direccion;
+	/**
+	 * Campo con la localidad del perfil del usuario
+	 */
 	private String localidad;
+	/**
+	 * Campo con la provincia del perfil del usuario
+	 */
 	private String provincia;
+	/**
+	 * Campo con el país del perfil del usuario
+	 */
 	private String pais;
+	/**
+	 * Variable contador con los MeGusta que recibe el perfil
+	 */
 	private int cont_MeGusta;
+	/**
+	 * Campo con el ID del usuario propietario del perfil
+	 */
 	private String user_ID;
+	/**
+	 * Lista de titulaciones incluidas en el perfil del usuario
+	 */
 	private ArrayList<Integer> listaTit;
+	/**
+	 * Lista de tecnologías incluidas en el perfil del usuario
+	 */
 	private ArrayList<Integer> listaTec;
+	/**
+	 * Lista de experiencias incluidas en el perfil del usuario
+	 */
 	private ArrayList<Experiencia> listaExp;
-	
-	
+	/**
+	 * Campo con el ID de la titulación 
+	 */	
 	private int titulacion_ID;
+	/**
+	 * Campo con el nombre de la titulación
+	 */
 	private String nombre_Tit;
+	/**
+	 * Lista con las titulaciones del perfil
+	 */
 	private String titulacion_var[];
-	
+	/**
+	 * Campo con el ID de la tecnología
+	 */
 	private int tecnologia_ID;
+	/**
+	 * Campo con el nombre de la tecnología
+	 */
 	private String nombre_Tec;
+	/**
+	 * Lista con las tecnologías del perfil
+	 */
 	private String tecnologia_var[];
-	
+	/**
+	 * Campo con el nombre de la empresa de la experiencia
+	 */
 	private String empresa;
+	/**
+	 * Campo con el cargo de la experiencia
+	 */
 	private String cargo;
+	/**
+	 * Campo con el año de inicio de la experiencia
+	 */
 	int a_Inicio;
+	/**
+	 * Campo con el año de finalización de la experiencia
+	 */
 	int a_Fin;
-	
+	/**
+	 * Campo con la acción tomada por el usuario al crear su perfil
+	 */
 	private String accion;
 	
-	
+	/**
+	 * Constructor con el que se inicializan las listas de titulaciones, tecnologías y experiencias
+	 */
 	public PerfilBean(){
 		super();
 		listaTit=new ArrayList<Integer>();
@@ -60,7 +139,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 	
 
 	/**
-	 * @return the profile_ID
+	 * @return profile_ID
 	 */
 	public int getProfile_ID() {
 		return profile_ID;
@@ -69,7 +148,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param profile_ID the profile_ID to set
+	 * @param profile_ID
 	 */
 	public void setProfile_ID(int profile_ID) {
 		this.profile_ID = profile_ID;
@@ -78,7 +157,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the pdf
+	 * @return pdf
 	 */
 	public String getPdf() {
 		return pdf;
@@ -87,7 +166,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param pdf the pdf to set
+	 * @param pdf
 	 */
 	public void setPdf(String pdf) {
 		this.pdf = pdf;
@@ -96,7 +175,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the pdf_file
+	 * @return pdf_file
 	 */
 	public FormFile getPdf_file() {
 		return pdf_file;
@@ -105,7 +184,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param pdf_file the pdf_file to set
+	 * @param pdf_file
 	 */
 	public void setPdf_file(FormFile pdf_file) {
 		this.pdf_file = pdf_file;
@@ -117,7 +196,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the fotografia
+	 * @return fotografia
 	 */
 	public String getFotografia() {
 		return fotografia;
@@ -126,7 +205,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param fotografia the fotografia to set
+	 * @param fotografia
 	 */
 	public void setFotografia(String fotografia) {
 		this.fotografia = fotografia;
@@ -135,7 +214,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the fotografia_file
+	 * @return fotografia_file
 	 */
 	public FormFile getFotografia_file() {
 		return fotografia_file;
@@ -144,7 +223,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param fotografia_file the fotografia_file to set
+	 * @param fotografia_file
 	 */
 	public void setFotografia_file(FormFile fotografia_file) {
 		this.fotografia_file = fotografia_file;
@@ -156,7 +235,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the direccion
+	 * @return direccion
 	 */
 	public String getDireccion() {
 		return direccion;
@@ -165,7 +244,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param direccion the direccion to set
+	 * @param direccion
 	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
@@ -174,7 +253,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the localidad
+	 * @return localidad
 	 */
 	public String getLocalidad() {
 		return localidad;
@@ -183,7 +262,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param localidad the localidad to set
+	 * @param localidad
 	 */
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
@@ -192,7 +271,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the provincia
+	 * @return provincia
 	 */
 	public String getProvincia() {
 		return provincia;
@@ -201,7 +280,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param provincia the provincia to set
+	 * @param provincia
 	 */
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
@@ -210,7 +289,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the pais
+	 * @return pais
 	 */
 	public String getPais() {
 		return pais;
@@ -219,7 +298,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param pais the pais to set
+	 * @param pais
 	 */
 	public void setPais(String pais) {
 		this.pais = pais;
@@ -228,7 +307,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the cont_MeGusta
+	 * @return cont_MeGusta
 	 */
 	public int getCont_MeGusta() {
 		return cont_MeGusta;
@@ -237,7 +316,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param cont_MeGusta the cont_MeGusta to set
+	 * @param cont_MeGusta
 	 */
 	public void setCont_MeGusta(int cont_MeGusta) {
 		this.cont_MeGusta = cont_MeGusta;
@@ -246,7 +325,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the user_ID
+	 * @return user_ID
 	 */
 	public String getUser_ID() {
 		return user_ID;
@@ -255,7 +334,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param user_ID the user_ID to set
+	 * @param user_ID
 	 */
 	public void setUser_ID(String user_ID) {
 		this.user_ID = user_ID;
@@ -264,7 +343,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the listaTit
+	 * @return listaTit
 	 */
 	public ArrayList<Integer> getListaTit() {
 		return listaTit;
@@ -273,7 +352,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param listaTit the listaTit to set
+	 * @param listaTit
 	 */
 	public void setListaTit(ArrayList<Integer> listaTit) {
 		this.listaTit = listaTit;
@@ -287,7 +366,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 	}
 
 	/**
-	 * @return the listaTec
+	 * @return listaTec
 	 */
 	public ArrayList<Integer> getListaTec() {
 		return listaTec;
@@ -296,7 +375,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param listaTec the listaTec to set
+	 * @param listaTec
 	 */
 	public void setListaTec(ArrayList<Integer> listaTec) {
 		this.listaTec = listaTec;
@@ -311,7 +390,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 	}
 
 	/**
-	 * @return the listaExp
+	 * @return listaExp
 	 */
 	public ArrayList<Experiencia> getListaExp() {
 		return listaExp;
@@ -320,7 +399,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param listaExp the listaExp to set
+	 * @param listaExp
 	 */
 	public void setListaExp(ArrayList<Experiencia> listaExp) {
 		this.listaExp = listaExp;
@@ -329,7 +408,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the titulacion_ID
+	 * @return titulacion_ID
 	 */
 	public int getTitulacion_ID() {
 		return titulacion_ID;
@@ -338,7 +417,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param titulacion_ID the titulacion_ID to set
+	 * @param titulacion_ID
 	 */
 	public void setTitulacion_ID(int titulacion_ID) {
 		this.titulacion_ID = titulacion_ID;
@@ -347,7 +426,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the nombre_Tit
+	 * @return nombre_Tit
 	 */
 	public String getNombre_Tit() {
 		return nombre_Tit;
@@ -356,7 +435,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param nombre_Tit the nombre_Tit to set
+	 * @param nombre_Tit
 	 */
 	public void setNombre_Tit(String nombre_Tit) {
 		this.nombre_Tit = nombre_Tit;
@@ -365,7 +444,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the titulacion_var
+	 * @return titulacion_var
 	 */
 	public String[] getTitulacion_var() {
 		return titulacion_var;
@@ -374,7 +453,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param titulacion_var the titulacion_var to set
+	 * @param titulacion_var
 	 */
 	public void setTitulacion_var(String[] titulacion_var) {
 		this.titulacion_var = titulacion_var;
@@ -383,7 +462,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the tecnologia_ID
+	 * @return tecnologia_ID
 	 */
 	public int getTecnologia_ID() {
 		return tecnologia_ID;
@@ -392,7 +471,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param tecnologia_ID the tecnologia_ID to set
+	 * @param tecnologia_ID
 	 */
 	public void setTecnologia_ID(int tecnologia_ID) {
 		this.tecnologia_ID = tecnologia_ID;
@@ -401,7 +480,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the nombre_Tec
+	 * @return nombre_Tec
 	 */
 	public String getNombre_Tec() {
 		return nombre_Tec;
@@ -410,7 +489,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param nombre_Tec the nombre_Tec to set
+	 * @param nombre_Tec
 	 */
 	public void setNombre_Tec(String nombre_Tec) {
 		this.nombre_Tec = nombre_Tec;
@@ -419,7 +498,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the tecnologia_var
+	 * @return tecnologia_var
 	 */
 	public String[] getTecnologia_var() {
 		return tecnologia_var;
@@ -428,7 +507,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param tecnologia_var the tecnologia_var to set
+	 * @param tecnologia_var
 	 */
 	public void setTecnologia_var(String[] tecnologia_var) {
 		this.tecnologia_var = tecnologia_var;
@@ -437,7 +516,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the empresa
+	 * @return empresa
 	 */
 	public String getEmpresa() {
 		return empresa;
@@ -446,7 +525,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param empresa the empresa to set
+	 * @param empresa
 	 */
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
@@ -455,7 +534,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the cargo
+	 * @return cargo
 	 */
 	public String getCargo() {
 		return cargo;
@@ -464,7 +543,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param cargo the cargo to set
+	 * @param cargo
 	 */
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
@@ -473,7 +552,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the a_Inicio
+	 * @return a_Inicio
 	 */
 	public int getA_Inicio() {
 		return a_Inicio;
@@ -482,7 +561,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param a_Inicio the a_Inicio to set
+	 * @param a_Inicio
 	 */
 	public void setA_Inicio(int a_Inicio) {
 		this.a_Inicio = a_Inicio;
@@ -491,7 +570,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the a_Fin
+	 * @return a_Fin
 	 */
 	public int getA_Fin() {
 		return a_Fin;
@@ -500,7 +579,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param a_Fin the a_Fin to set
+	 * @param a_Fin
 	 */
 	public void setA_Fin(int a_Fin) {
 		this.a_Fin = a_Fin;
@@ -509,7 +588,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @return the accion
+	 * @return accion
 	 */
 	public String getAccion() {
 		return accion;
@@ -518,14 +597,20 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 
 
 	/**
-	 * @param accion the accion to set
+	 * @param accion
 	 */
 	public void setAccion(String accion) {
 		this.accion = accion;
 	}
 
 
-
+	/**
+	 * Valida los campos del formulario de crearPage.jsp
+	 * 
+	 * @param mapping
+	 * @param request
+	 * @return errors identificación del error
+	 */
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
 		ActionErrors errors = new ActionErrors();
 		if(!empresa.isEmpty()){
@@ -540,6 +625,7 @@ public class PerfilBean extends ValidatorForm implements Serializable {
 		
 		return errors;
 	}
+
 
 
 }

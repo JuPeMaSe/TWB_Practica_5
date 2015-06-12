@@ -10,138 +10,177 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.validator.ValidatorForm;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Usuario;
-
-public class UsuarioBean extends ValidatorForm implements Serializable{
-	
+/**
+ * <p>Extiende la clase ValidatorForm. Representa un objeto javabean, con los atributos
+ * correspondientes a todos los campos de un usuario, que se completan en
+ * el formulario crearPage.jsp</p>
+ * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
+public class UsuarioBean extends ValidatorForm implements Serializable{	
+	/**
+	 * Atributo: serialVersionUID tipo:long
+	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Campo con el ID del usuario
+	 */
 	private String user_ID;
+	/**
+	 * Campo con la contraseña del usuario
+	 */
 	private String password;
+	/**
+	 * Campo con la repetición de la contraseña del usuario
+	 */
 	private String password2;
+	/**
+	 * Campo con el nombre del usuario
+	 */
 	private String nombre;
+	/**
+	 * Campo con los apellidos del usuario
+	 */
 	private String apellidos;
+	/**
+	 * Campo con el teléfono del usuario
+	 */
 	private String tfno;
+	/**
+	 * Campo con el email del usuario
+	 */
 	private String email;
+	/**
+	 * Campo con el tipo de usuario dentro del sistema
+	 */
 	private String userType; //Está limitado a 3 caracteres en la BD
 	
+	/**
+	 * Constructor con una llamada al constructor de la superclase ValidatorForm
+	 */
 	public UsuarioBean(){
 		super();
 	}
 
 	/**
-	 * @return the user_ID
+	 * @return user_ID
 	 */
 	public String getUser_ID() {
 		return user_ID;
 	}
 
 	/**
-	 * @param user_ID the user_ID to set
+	 * @param user_ID
 	 */
 	public void setUser_ID(String user_ID) {
 		this.user_ID = user_ID;
 	}
 
 	/**
-	 * @return the password
+	 * @return password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * @return the password2
+	 * @return password2
 	 */
 	public String getPassword2() {
 		return password2;
 	}
 
 	/**
-	 * @param password2 the password2 to set
+	 * @param password2
 	 */
 	public void setPassword2(String password2) {
 		this.password2 = password2;
 	}
 
 	/**
-	 * @return the nombre
+	 * @return nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * @param nombre
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	/**
-	 * @return the apellidos
+	 * @return apellidos
 	 */
 	public String getApellidos() {
 		return apellidos;
 	}
 
 	/**
-	 * @param apellidos the apellidos to set
+	 * @param apellidos
 	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
 	/**
-	 * @return the tfno
+	 * @return tfno
 	 */
 	public String getTfno() {
 		return tfno;
 	}
 
 	/**
-	 * @param tfno the tfno to set
+	 * @param tfno
 	 */
 	public void setTfno(String tfno) {
 		this.tfno = tfno;
 	}
 
 	/**
-	 * @return the email
+	 * @return email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 	/**
-	 * @return the userType
+	 * @return userType
 	 */
 	public String getUserType() {
 		return userType;
 	}
 
 	/**
-	 * @param userType the userType to set
+	 * @param userType
 	 */
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
-
 	
-	/* (non-Javadoc)
-	 * @see org.apache.struts.validator.ValidatorForm#validate(org.apache.struts.action.ActionMapping, javax.servlet.http.HttpServletRequest)
+	/**
+	 * Valida los campos del formulario de crearPage.jsp
+	 * 
+	 * @param mapping
+	 * @param request
+	 * @return errors identificación del error
 	 */
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
 		ActionErrors errors = new ActionErrors();

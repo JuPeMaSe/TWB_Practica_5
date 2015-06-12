@@ -9,22 +9,30 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
 /**
- * Esta clase javabean tiene el único próposito de almacenar en el array String[] userIds,
- * los checkbox seleccionados en el formulario eliminarUsuarioPage.jsp y que se corresponden
- * con los usuarios que el administrador desea eliminar.
+ * <p>Extiende la clase ActionForm de Struts.  Representa un objeto javabean, con el único 
+ * próposito de almacenar en el atributo de tipo array String[] userIds, los checkbox seleccionados
+ * en el formulario eliminarUsuarioPage.jsp y que se corresponden con los usuarios que el administrador
+ * desea eliminar.</p>
  */
 public class EliminarUsuariosBean extends ActionForm implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	protected String[] userIds = {};
 
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Array de Strings que almacena los usuarios a eliminar.
+	 */
+	protected String[] userIds = {};
+		
+	/**
+	 * Constructor con la llamada super() al constructor de la clase ActionForm
+	 */
 	public EliminarUsuariosBean() {
 		super();
 	}
 	
 	
 	/**
-	 * @return the userIds
+	 * @return userIds
 	 */
 	public String[] getUserIds() {
 		return userIds;
@@ -32,7 +40,7 @@ public class EliminarUsuariosBean extends ActionForm implements Serializable{
 
 
 	/**
-	 * @param userIds the userIds to set
+	 * @param userIds
 	 */
 	public void setUserIds(String[] userIds) {
 		this.userIds = userIds;
@@ -48,6 +56,6 @@ public class EliminarUsuariosBean extends ActionForm implements Serializable{
 		super.reset(mapping, request);
 	}
 	
-	
+
 
 }

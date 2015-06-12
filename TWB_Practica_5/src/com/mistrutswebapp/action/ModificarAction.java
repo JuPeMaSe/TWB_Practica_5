@@ -18,9 +18,23 @@ import com.mistrutswebapp.beans.PerfilBean;
 import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Perfil;
 import com.mistrutswebapp.model.Usuario;
-
+/**
+ * Prepara el bean perfilBean con las propiedades del perfil a modificar 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class ModificarAction extends Action {
-	
+	/**
+	 * Ejecuta las acciones necesarias para mostrar las propiedades del perfil a modificar en el formulario.
+	 * Según la elección efectuada por el usuario se saldrá de la página sin modificar o por el contrario
+	 * se redirige a la página de confirmación de las modificaciones, para que sean guardadas en la base de datos
+	 * @param mapping 
+	 * @param form obtiene el javabean
+	 * @param request se refiere al alcance request
+	 * @param response se refiere al alcance response
+	 * @return <p>success (Si se pulsa Modificar Perfil)</p>
+	 * <p>exit (Si se pulsa Salir)</p>
+	 */
 	 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 	  {
 		 int intFinalProfile_ID = 0;
@@ -31,8 +45,7 @@ public class ModificarAction extends Action {
 		// PerfilBean perfilBean=(PerfilBean) request.getSession().getAttribute("perfilBean") ;
 		String strClave = modificarBean.getAccion();
 		if(strClave.equals("Salir")){
-			return mapping.findForward("exit");
-			
+			return mapping.findForward("exit");			
 		}else{
 			 intFinalProfile_ID= Integer.parseInt(strClave.substring(18));
 //				System.out.println("perfil ID = "+intFinalProfile_ID);

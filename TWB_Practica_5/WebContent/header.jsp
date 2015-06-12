@@ -24,6 +24,9 @@
 			  <span class="topnavigationlink">
 			  <a class="a" href="./memoriaArchivos/MemoriasTW.pdf" target="_blank">Memoria de la práctica(PDF)</a>
 			 </span>
+			 <span class="topnavigationlink">
+			  <a class="a" href="./doc/index.html" target="_blank">Javadoc de la Práctica</a>
+			 </span>
 		</div>
 	</td>
 	<td align="right">

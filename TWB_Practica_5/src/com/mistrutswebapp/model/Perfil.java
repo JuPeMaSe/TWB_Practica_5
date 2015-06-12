@@ -6,12 +6,18 @@ import java.sql.Blob;
 import java.util.ArrayList;
 
 import org.apache.struts.upload.FormFile;
-
-public class Perfil implements Serializable {
+/**
+ * Clase para almacenar el perfil de un usuario.
+ * Atributos: profile_ID, pdf, pdf_file, fotografia, fotografia_file, direccion, localidad, 
+ * provincia, pais, cont_MeGusta, user_ID, reference, listaTit, listaTec, listExp.
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
+public class Perfil implements Serializable {	
 	private int profile_ID;
-	private String pdf; //a cambiar el tipo para almacenar pdf
+	private String pdf; 
 	private FormFile pdf_file;
-	private String fotografia;//a cambiar el tipo para almacenar jpeg, bmp...	
+	private String fotografia;	
 	private FormFile fotografia_file;
 	private String direccion;
 	private String localidad;
@@ -24,199 +30,240 @@ public class Perfil implements Serializable {
 	private ArrayList<Experiencia> listaExp;
 	private ArrayList<Integer> listaTec;
 	
-	
+	/**
+	 * Constructor. Inicializa los ArrayList
+	 */
 	public Perfil(){
 		super();
 		listaTit=new ArrayList<Integer>();
 		listaTec=new ArrayList<Integer>();
 		listaExp=new ArrayList<Experiencia>();
 	}
-	
 
 	/**
-	 * @return the pdf_file
+	 * @return profile_ID
 	 */
-	public FormFile getPdf_file() {
-		return pdf_file;
+	public int getProfile_ID() {
+		return profile_ID;
 	}
 
-
 	/**
-	 * @param pdf_file the pdf_file to set
+	 * Establece el valor de profile_ID con el valor del parametro 
+	 * @param profile_ID
 	 */
-	public void setPdf_file(FormFile pdf_file) {
-		this.pdf_file = pdf_file;
+	public void setProfile_ID(int profile_ID) {
+		this.profile_ID = profile_ID;
 	}
 
-
 	/**
-	 * @return the fotografia_file
-	 */
-	public FormFile getFotografia_file() {
-		return fotografia_file;
-	}
-
-
-	/**
-	 * @param fotografia_file the fotografia_file to set
-	 */
-	public void setFotografia_file(FormFile fotografia_file) {
-		this.fotografia_file = fotografia_file;
-	}
-
-
-	/**
-	 * @return the pdf
+	 * @return pdf
 	 */
 	public String getPdf() {
 		return pdf;
 	}
 
 	/**
-	 * @param pdf the pdf to set
+	 * Establece el valor de pdf con el valor del parametro 
+	 * @param pdf
 	 */
 	public void setPdf(String pdf) {
 		this.pdf = pdf;
 	}
 
 	/**
-	 * @return the fotografia
+	 * @return pdf_file
+	 */
+	public FormFile getPdf_file() {
+		return pdf_file;
+	}
+
+	/**
+	 * Establece el valor de pdf_file con el valor del parametro 
+	 * @param pdf_file
+	 */
+	public void setPdf_file(FormFile pdf_file) {
+		this.pdf_file = pdf_file;
+	}
+
+	/**
+	 * @return fotografia
 	 */
 	public String getFotografia() {
 		return fotografia;
 	}
 
 	/**
-	 * @param fotografia the fotografia to set
+	 * Establece el valor de fotografia con el valor del parametro 
+	 * @param fotografia
 	 */
 	public void setFotografia(String fotografia) {
 		this.fotografia = fotografia;
 	}
-	
-	
 
-	public int getProfile_ID() {
-		return profile_ID;
+	/**
+	 * @return fotografia_file
+	 */
+	public FormFile getFotografia_file() {
+		return fotografia_file;
 	}
 
-
-	public void setProfile_ID(int profile_ID) {
-		this.profile_ID = profile_ID;
+	/**
+	 * Establece el valor de fotografia_file con el valor del parametro 
+	 * @param fotografia_file
+	 */
+	public void setFotografia_file(FormFile fotografia_file) {
+		this.fotografia_file = fotografia_file;
 	}
 
-
+	/**
+	 * @return direccion
+	 */
 	public String getDireccion() {
 		return direccion;
 	}
 
+	/**
+	 * Establece el valor de direccion con el valor del parametro 
+	 * @param direccion
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * @return localidad
+	 */
 	public String getLocalidad() {
 		return localidad;
 	}
 
+	/**
+	 * Establece el valor de localidad con el valor del parametro 
+	 * @param localidad
+	 */
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
 
+	/**
+	 * @return provincia
+	 */
 	public String getProvincia() {
 		return provincia;
 	}
 
+	/**
+	 * Establece el valor de provincia con el valor del parametro 
+	 * @param provincia
+	 */
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
 
+	/**
+	 * @return pais
+	 */
 	public String getPais() {
 		return pais;
 	}
 
+	/**
+	 * Establece el valor de pais con el valor del parametro 
+	 * @param pais
+	 */
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
 
+	/**
+	 * @return cont_MeGusta
+	 */
 	public int getCont_MeGusta() {
 		return cont_MeGusta;
 	}
 
+	/**
+	 * Establece el valor de cont_MeGusta con el valor del parametro 
+	 * @param cont_MeGusta
+	 */
 	public void setCont_MeGusta(int cont_MeGusta) {
 		this.cont_MeGusta = cont_MeGusta;
 	}
 
+	/**
+	 * @return user_ID
+	 */
 	public String getUser_ID() {
 		return user_ID;
 	}
 
+	/**
+	 * Establece el valor de user_ID con el valor del parametro 
+	 * @param user_ID
+	 */
 	public void setUser_ID(String user_ID) {
 		this.user_ID = user_ID;
 	}
 
+	/**
+	 * @return reference
+	 */
+	public String getReference() {
+		return reference;
+	}
 
 	/**
-	 * @return the listaTit
+	 * Establece el valor de reference con el valor del parametro 
+	 * @param reference
+	 */
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
+
+	/**
+	 * @return listaTit
 	 */
 	public ArrayList<Integer> getListaTit() {
 		return listaTit;
 	}
 
-
 	/**
-	 * @param listaTit the listaTit to set
+	 * Establece el valor de listaTit con el valor del parametro 
+	 * @param listaTit
 	 */
 	public void setListaTit(ArrayList<Integer> listaTit) {
 		this.listaTit = listaTit;
 	}
 
-
 	/**
-	 * @return the listaExp
+	 * @return listaExp
 	 */
 	public ArrayList<Experiencia> getListaExp() {
 		return listaExp;
 	}
 
-
 	/**
-	 * @param listaExp the listaExp to set
+	 * Establece el valor de listaExp con el valor del parametro 
+	 * @param listaExp
 	 */
 	public void setListaExp(ArrayList<Experiencia> listaExp) {
 		this.listaExp = listaExp;
 	}
 
-
 	/**
-	 * @return the listaTec
+	 * @return listaTec
 	 */
 	public ArrayList<Integer> getListaTec() {
 		return listaTec;
 	}
 
-
 	/**
-	 * @param listaTec the listaTec to set
+	 * Establece el valor de listaTec con el valor del parametro 
+	 * @param listaTec
 	 */
 	public void setListaTec(ArrayList<Integer> listaTec) {
 		this.listaTec = listaTec;
 	}
 
 
-	/**
-	 * @return the reference
-	 */
-	public String getReference() {
-		return reference;
-	}
-
-
-	/**
-	 * @param reference the reference to set
-	 */
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
-
-	
-	
 }

@@ -8,126 +8,170 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.validator.ValidatorForm;
-
+/**
+ * <p>Extiende la clase ValidatorForm. Representa un objeto javabean, con los campos
+ * correspondientes a los filtros elegidos en el formulario consultaPage.jsp con los que
+ * se desea realizar la consulta de usuarios de la base de datos.</p>
+ * 
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class ConsultaBean extends ValidatorForm implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Campo con la localidad por la que filtrar la consulta
+	 */
 	private String localidad;
+	/**
+	 * Campo con la provincia por la que filtrar la consulta
+	 */
 	private String provincia;
+	/**
+	 * Campo con el pais por el que filtrar la consulta
+	 */
 	private String pais;
+	/**
+	 * Realizar filtro por localidad
+	 */
 	private boolean chkLocalidad;
+	/**
+	 * Realizar filtro por provincia
+	 */
 	private boolean chkProvincia;
+	/**
+	 * Realizar filtro por pais
+	 */
 	private boolean chkPais;
-	
+	/**
+	 * Campo con el ID de la tecnología por la que filtrar la consulta
+	 */
 	private String tecn_ID;
+	/**
+	 * Campo con el nombre de la tecnología por la que filtrar la consulta
+	 */
 	private String nombre_Tec;
+	/**
+	 * Realizar filtro por tecnología
+	 */
 	private boolean chkTecnologia;
-	
+	/**
+	 * Campo con el ID de la titulación por la que filtrar la consulta
+	 */
 	private String titu_ID;
+	/**
+	 * Campo con el nombre de la titulación por la que filtrar la consulta
+	 */
 	private String nombre_Tit;
+	/**
+	 * Realizar el filtro por la titulación
+	 */
 	private boolean chkTitulacion;
-	
+	/**
+	 * Campo con los años de experiencia por los que filtrar la consulta
+	 */
 	private String a_Experiencia;
+	/**
+	 * Realizar el filtro por los años de experiencia
+	 */
 	private boolean chkExperiencia;
 	
 
 	/**
-	 * @return the localidad
+	 * @return localidad
 	 */
 	public String getLocalidad() {
 		return localidad;
 	}
 	/**
-	 * @param localidad the localidad to set
+	 * @param localidad
 	 */
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
 	/**
-	 * @return the provincia
+	 * @return provincia
 	 */
 	public String getProvincia() {
 		return provincia;
 	}
 	/**
-	 * @param provincia the provincia to set
+	 * @param provincia
 	 */
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
 	/**
-	 * @return the pais
+	 * @return pais
 	 */
 	public String getPais() {
 		return pais;
 	}
 	/**
-	 * @param pais the pais to set
+	 * @param pais
 	 */
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
 	/**
-	 * @return the tecnologia_ID
+	 * @return tecnologia_ID
 	 */
 	public String getTecn_ID() {
 		return tecn_ID;
 	}
 	/**
-	 * @param tecnologia_ID the tecnologia_ID to set
+	 * @param tecnologia_ID
 	 */
 	public void setTecn_ID(String tecn_ID) {
 		this.tecn_ID = tecn_ID;
 	}
 	/**
-	 * @return the nombre_Tec
+	 * @return nombre_Tec
 	 */
 	public String getNombre_Tec() {
 		return nombre_Tec;
 	}
 	/**
-	 * @param nombre_Tec the nombre_Tec to set
+	 * @param nombre_Tec
 	 */
 	public void setNombre_Tec(String nombre_Tec) {
 		this.nombre_Tec = nombre_Tec;
 	}
 	/**
-	 * @return the titulacion_ID
+	 * @return titulacion_ID
 	 */
 	public String getTitu_ID() {
 		return titu_ID;
 	}
 	/**
-	 * @param titulacion_ID the titulacion_ID to set
+	 * @param titulacion_ID
 	 */
 	public void setTitu_ID(String titu_ID) {
 		this.titu_ID = titu_ID;
 	}
 	/**
-	 * @return the nombre_Tit
+	 * @return nombre_Tit
 	 */
 	public String getNombre_Tit() {
 		return nombre_Tit;
 	}
 	/**
-	 * @param nombre_Tit the nombre_Tit to set
+	 * @param nombre_Tit
 	 */
 	public void setNombre_Tit(String nombre_Tit) {
 		this.nombre_Tit = nombre_Tit;
 	}
 	
 	/**
-	 * @return the a_Experiencia
+	 * @return a_Experiencia
 	 */
 	public String getA_Experiencia() {
 		return a_Experiencia;
 	}
 	/**
-	 * @param a_Experiencia the a_Experiencia to set
+	 * @param a_Experiencia
 	 */
 	public void setA_Experiencia(String a_Experiencia) {
 		this.a_Experiencia = a_Experiencia;
@@ -135,77 +179,85 @@ public class ConsultaBean extends ValidatorForm implements Serializable {
 	
 	
 	/**
-	 * @return the chkLocalidad
+	 * @return chkLocalidad
 	 */
 	public boolean isChkLocalidad() {
 		return chkLocalidad;
 	}
 	/**
-	 * @param chkLocalidad the chkLocalidad to set
+	 * @param chkLocalidad
 	 */
 	public void setChkLocalidad(boolean chkLocalidad) {
 		this.chkLocalidad = chkLocalidad;
 	}
 	/**
-	 * @return the chkProvincia
+	 * @return chkProvincia
 	 */
 	public boolean isChkProvincia() {
 		return chkProvincia;
 	}
 	/**
-	 * @param chkProvincia the chkProvincia to set
+	 * @param chkProvincia
 	 */
 	public void setChkProvincia(boolean chkProvincia) {
 		this.chkProvincia = chkProvincia;
 	}
 	/**
-	 * @return the chkPais
+	 * @return chkPais
 	 */
 	public boolean isChkPais() {
 		return chkPais;
 	}
 	/**
-	 * @param chkPais the chkPais to set
+	 * @param chkPais
 	 */
 	public void setChkPais(boolean chkPais) {
 		this.chkPais = chkPais;
 	}
 	/**
-	 * @return the chkTecnologia
+	 * @return chkTecnologia
 	 */
 	public boolean isChkTecnologia() {
 		return chkTecnologia;
 	}
 	/**
-	 * @param chkTecnologia the chkTecnologia to set
+	 * @param chkTecnologia
 	 */
 	public void setChkTecnologia(boolean chkTecnologia) {
 		this.chkTecnologia = chkTecnologia;
 	}
 	/**
-	 * @return the chkTitulacion
+	 * @return chkTitulacion
 	 */
 	public boolean isChkTitulacion() {
 		return chkTitulacion;
 	}
 	/**
-	 * @param chkTitulacion the chkTitulacion to set
+	 * @param chkTitulacion
 	 */
 	public void setChkTitulacion(boolean chkTitulacion) {
 		this.chkTitulacion = chkTitulacion;
 	}
 	/**
-	 * @return the chkExperiencia
+	 * @return chkExperiencia
 	 */
 	public boolean isChkExperiencia() {
 		return chkExperiencia;
 	}
 	/**
-	 * @param chkExperiencia the chkExperiencia to set
+	 * @param chkExperiencia
 	 */
 	public void setChkExperiencia(boolean chkExperiencia) {
 		this.chkExperiencia = chkExperiencia;
 	}
+	/**
+	 * Valida los campos del formulario de consulta de la base de datos consultaPage.jsp.
+	 * 
+	 * @param mapping
+	 * @param request
+	 * @return errors identificación del error
+	 */
+	@Override
 	public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
 		ActionErrors errors = new ActionErrors();
 		if(!this.isChkPais() && !this.isChkLocalidad() && !this.isChkProvincia() && !this.isChkTecnologia() && !this.isChkTitulacion() && !this.isChkExperiencia() ){

@@ -5,10 +5,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
-
+/**
+ * Guarda los atributos de un usuario
+ * Atributos: user_ID, password, nombre, apellidos, tfno, email, userType, perfiles
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class Usuario implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 	private String user_ID;
 	private String password;
@@ -19,130 +22,133 @@ public class Usuario implements Serializable {
 	private String email;
 	private String userType; //Está limitado a 3 caracteres en la BD
 	private Collection<Perfil> perfiles;
-	
+	/**
+	 * Constructor. 
+	 */
 	public Usuario(){
 		super();
 		perfiles=new ArrayList<Perfil>();
 	}
-	
+
 	/**
-	 * @return the user_ID
+	 * @return user_ID
 	 */
 	public String getUser_ID() {
 		return user_ID;
 	}
 
 	/**
-	 * @param user_ID the user_ID to set
+	 * Establece el valor de user_ID con el valor del parametro 
+	 * @param user_ID
 	 */
 	public void setUser_ID(String user_ID) {
 		this.user_ID = user_ID;
 	}
 
 	/**
-	 * @return the password
+	 * @return password
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * @param password the password to set
+	 * Establece el valor de password con el valor del parametro 
+	 * @param password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * @return the nombre
+	 * @return nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * Establece el valor de nombre con el valor del parametro 
+	 * @param nombre
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	/**
-	 * @return the apellidos
+	 * @return apellidos
 	 */
 	public String getApellidos() {
 		return apellidos;
 	}
 
 	/**
-	 * @param apellidos the apellidos to set
+	 * Establece el valor de apellidos con el valor del parametro 
+	 * @param apellidos
 	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
 	/**
-	 * @return the tfno
+	 * @return tfno
 	 */
 	public String getTfno() {
 		return tfno;
 	}
 
 	/**
-	 * @param tfno the tfno to set
+	 * Establece el valor de tfno con el valor del parametro 
+	 * @param tfno
 	 */
 	public void setTfno(String tfno) {
 		this.tfno = tfno;
 	}
 
 	/**
-	 * @return the email
+	 * @return email
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * @param email the email to set
+	 * Establece el valor de email con el valor del parametro 
+	 * @param email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
-	 * @return the userType
+	 * @return userType
 	 */
 	public String getUserType() {
 		return userType;
 	}
 
 	/**
-	 * @param userType the userType to set
+	 * Establece el valor de userType con el valor del parametro 
+	 * @param userType
 	 */
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
 
 	/**
-	 * @return the perfiles
+	 * @return perfiles
 	 */
 	public Collection<Perfil> getPerfiles() {
 		return perfiles;
 	}
 
 	/**
-	 * @param perfiles the perfiles to set
+	 * Establece el valor de perfiles con el valor del parametro 
+	 * @param perfiles
 	 */
 	public void setPerfiles(Collection<Perfil> perfiles) {
 		this.perfiles = perfiles;
 	}
-//
-//	/**
-//	 * 
-//	 */
-//	public void addPerfil(Perfil perfil){
-//		perfiles.add(perfil);
-//		perfil.setUser_ID(this.user_ID);
-//	}
-	
+
 }
 

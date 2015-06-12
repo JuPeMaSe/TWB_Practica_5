@@ -1,7 +1,11 @@
 package com.mistrutswebapp.model;
 
 import java.io.Serializable;
-
+/**
+ * Clase que guarda la experiencia de un determinado perfil. Tiene como atributros: empresa, cargo, a_Inicio, a_Fin;
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class Experiencia implements Serializable{
 	private static final long serialVersionUID = 1L;
 	int exp_ID;
@@ -13,87 +17,106 @@ public class Experiencia implements Serializable{
 	String strA_Fin;
 	int profile_ID;
 	
+	/**
+	 * Constructor por defecto
+	 */
 	public Experiencia(){
 		super();
 	}
 
+
 	/**
-	 * @return the exp_ID
+	 * @return exp_ID
 	 */
 	public int getExp_ID() {
 		return exp_ID;
 	}
 
+
 	/**
-	 * @param exp_ID the exp_ID to set
+	 * Establece el valor de exp_ID con el valor del parametro 
+	 * @param exp_ID
 	 */
 	public void setExp_ID(int exp_ID) {
 		this.exp_ID = exp_ID;
 	}
 
+
 	/**
-	 * @return the empresa
+	 * @return empresa
 	 */
 	public String getEmpresa() {
 		return empresa;
 	}
 
+
 	/**
-	 * @param empresa the empresa to set
+	 * Establece el valor de empresa con el valor del parametro 
+	 * @param empresa
 	 */
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
 	}
 
+
 	/**
-	 * @return the cargo
+	 * @return cargo
 	 */
 	public String getCargo() {
 		return cargo;
 	}
 
+
 	/**
-	 * @param cargo the cargo to set
+	 * Establece el valor de cargo con el valor del parametro 
+	 * @param cargo
 	 */
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
 
-	
+
 	/**
-	 * @return the a_Inicio
+	 * @return a_Inicio
 	 */
 	public int getA_Inicio() {
 		return a_Inicio;
 	}
 
+
 	/**
-	 * @param a_Inicio the a_Inicio to set
+	 * Establece el valor de a_Inicio con el valor del parametro 
+	 * @param a_Inicio
 	 */
 	public void setA_Inicio(int a_Inicio) {
 		this.a_Inicio = a_Inicio;
 	}
 
+
 	/**
-	 * @return the a_Fin
+	 * @return a_Fin
 	 */
 	public int getA_Fin() {
 		return a_Fin;
 	}
 
+
 	/**
-	 * @param a_Fin the a_Fin to set
+	 * Establece el valor de a_Fin con el valor del parametro 
+	 * @param a_Fin
 	 */
 	public void setA_Fin(int a_Fin) {
 		this.a_Fin = a_Fin;
 	}
 
+
 	/**
-	 * @return the strA_Inicio
+	 * @return strA_Inicio
 	 */
 	public String getStrA_Inicio() {
-		return (""+a_Inicio);
+		return strA_Inicio;
 	}
+
 
 	/**
 	 * @param strA_Inicio the strA_Inicio to set

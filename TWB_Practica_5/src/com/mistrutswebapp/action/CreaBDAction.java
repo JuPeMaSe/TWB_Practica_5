@@ -28,10 +28,26 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Crea la estructura de la base de datos vacía.
+ * Es la primera acción que se realiza al lanzar la aplicación
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ *
+ */
 public class CreaBDAction extends Action {
 	 private static Log log = LogFactory.getLog(LoginAction.class);
 	 HttpSession sesion =null;
 	 
+	 /**
+	  *Ejecuta las acciones necesarias para crear las distintas tablas de la base de datos.
+	  *También inicializa listaPaises, listaTitulaciones, y listaTecnologías con unos valores predeterminados
+	  *que serán posteriormente utilizados en la aplicación
+	  *@param mapping 
+	  * @param form obtiene el javabean
+	  * @param request se refiere al alcance request
+	  * @param response se refiere al alcance response
+	  * @return Ok
+	  */
 	 public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 	 { 
 //		  if (log.isInfoEnabled())
@@ -100,7 +116,7 @@ public class CreaBDAction extends Action {
               //Creamos la tabla Titulacion
               sql="CREATE TABLE Titulacion(" +
               		"	titulacion_ID INTEGER NOT NULL PRIMARY KEY," +
-              		"	nombre_Tit VARCHAR(50)" +
+              		"	nombre_Tit VARCHAR(100)" +
               		");";
               st.executeUpdate(sql);
               //Creamos la tabla Perfil_Tit
@@ -123,27 +139,83 @@ public class CreaBDAction extends Action {
            
               
               //Introducimos varias titulaciones
-              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID,nombre_Tit) " +
-              		"VALUES (0,'Sin titulación')");
-              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID,nombre_Tit) " +
-            		"VALUES (1,'Graduado Ingenieria Informatica')");
-              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) " +
-              		"VALUES (2,'Graduado Ingenieria Tecnologías de la Información')");
-              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) " +
-              		"VALUES (3,'Graduado Física')");
-              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) " +
-              		"VALUES (4,'Graduado Matemáticas')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (0,'Sin titulación')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (1,'Grado en Administración y Dirección de Empresas')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (2,'Grado en Arquitectura Técnica')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (3,'Grado en Bellas Artes')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (4,'Grado en Biotecnología')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (5,'Grado en Ciencia y Tecnología de los Alimentos')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (6,'Grado en Ciencias Ambientales')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (7,'Grado en Ciencias de la Actividad Física y del Deporte')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (8,'Grado en Derecho')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (9,'Grado en Economía')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (10,'Grado en Enfermería')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (11,'Grado en Estudios Clásicos')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (12,'Grado en Estudios en Arquitectura')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (13,'Grado en Estudios Ingleses')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (14,'Grado en Filología Hispánica')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (15,'Grado en Filosofía')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (16,'Grado en Finanzas y Contabilidad')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (17,'Grado en Física')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (18,'Grado en Fisioterapia')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (19,'Grado en Geografía y Ordenación del Territorio')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (20,'Grado en Geología')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (21,'Grado en Gestión y Administración Pública')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (22,'Grado en Historia')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (23,'Grado en Historia del Arte')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (24,'Grado en Información y Documentación')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (25,'Grado en Ingeniería Agroalimentaria y del Medio Rural')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (26,'Grado en Ingeniería Civil')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (27,'Grado en Ingeniería de Organización Industrial')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (28,'Grado en Ingeniería de Tecnologías Industriales')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (29,'Grado en Ingeniería de Tecnologías y Servicios de Teleco')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (30,'Grado en Ingeniería Eléctrica')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (31,'Grado en Ingeniería Electrónica y Automática')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (32,'Grado en Ingeniería en Diseño Industrial y Desarrollo')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (33,'Grado en Ingeniería Informática')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (34,'Grado en Ingeniería Mecánica')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (35,'Grado en Ingeniería Mecatrónica')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (36,'Grado en Ingeniería Química')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (37,'Grado en Lenguas Modernas')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (38,'Grado en Magisterio en Educación Infantil')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (39,'Grado en Magisterio en Educación Primaria')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (40,'Grado en Marketing e Investigación de Mercados')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (41,'Grado en Matemáticas')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (42,'Grado en Medicina')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (43,'Grado en Nutrición Humana y Dietética')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (44,'Grado en Odontología')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (45,'Grado en Optica y Optometría')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (46,'Grado en PCEO Grado en Derecho - Grado en Administración')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (47,'Grado en Periodismo')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (48,'Grado en Psicología')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (49,'Grado en Química')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (50,'Grado en Relaciones Laborales y Recursos Humanos')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (51,'Grado en Terapia Ocupacional')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (52,'Grado en Trabajo Social')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (53,'Grado en Turismo')");
+              st.executeUpdate("INSERT INTO Titulacion (titulacion_ID, nombre_Tit) VALUES (54,'Grado en Veterinaria')");
+              
               //Introducimos varias tecnologías
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
                 		"VALUES (0,'N/A')");
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
-              		"VALUES (1,'Java2')");
+                  	"VALUES (1,'Bases de datos: SQL')");
+                st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
+                    	"VALUES (2,'Bases de datos: mySQL')");
+                st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
+                      "VALUES (3,'Bases de datos: HyperSQL')");
+                st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
+                    	"VALUES (4,'C++')");
+                st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
+                    	"VALUES (5,'C##')");                
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
-                	"VALUES (2,'C++')");
+              		"VALUES (6,'Java2')");             
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
-                	"VALUES (3,'SQL')");
+                    "VALUES (7,'Spring')");
               st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
-                    "VALUES (4,'Struts')");
+                    "VALUES (8,'Struts')");
+              st.executeUpdate("INSERT INTO Tecnologia (tecnologia_ID, nombre_Tec) " +
+                  	"VALUES (9,'Visual Basic')");
               
               
               //Creamos la listaTitulaciones con scope=session

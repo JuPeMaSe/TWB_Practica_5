@@ -26,14 +26,23 @@ import com.mistrutswebapp.model.ModelFacade;
 import com.mistrutswebapp.model.Usuario;
 
 /**
- * <p>Descripcion general de lo que hace esta clase</p>
- * @author Autor
- * @version Version
+ * Crea un nuevo usuario y establece el loginBean de este usuario con alcance session.
+ * @author Grupo 7 Prácticas Tecnologías Web 2014-2015
+ * 
  */
 public class AltaAction extends Action {
 	 private static Log log = LogFactory.getLog(AltaAction.class);
 	 private UsuarioBean usuarioBean;
-	  
+	  /**
+	   * Ejecuta las acciones necesarias para crear un usuario a través de la clase ModelFacade.
+	   * Utiliza usuarioBean: es el bean que tiene los datos del usuario provenientes del formulario.
+	   * Establece loginBean con los datos de este nuevo usuario y con scope=session
+	   * @param mapping 
+	   * @param form obtiene el javabean
+	   * @param request se refiere al alcance request
+	   * @param response se refiere al alcance response
+	   * @return succes
+	   */
 	  public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 	  {
 	    if (log.isInfoEnabled())
@@ -44,18 +53,9 @@ public class AltaAction extends Action {
 	    usuarioBean = (UsuarioBean)form;
 		 HttpSession session= request.getSession();
 		 session.setAttribute("usuarioBean",usuarioBean);
-//
-//		if (usuarioBean.getUser_ID() == null)
-//		{
-//			log.info("In AltaAction: usuario no registrado");
-//			return mapping.findForward("aborted");
-//		}
-//		else
-//		{
-			//addUsuario();
 			ModelFacade.crearUsuario(usuarioBean);
 			//compruebaAltaBD(); //método a eliminar en el definitivo. Sólo muestra por log el alta realizada
-			log.info("In AltaAction: usuario registrado: "+usuarioBean.getUser_ID());
+			log.info("In AltaAction: nuevo usuario registrado: "+usuarioBean.getUser_ID());
 			//pasamos la información al loginBean
 			LoginBean loginBean = (LoginBean)session.getAttribute("loginBean");
 			loginBean.setUser_ID(usuarioBean.getUser_ID());
@@ -90,24 +90,4 @@ public class AltaAction extends Action {
 //	     }
 //	}
 //
-////	//Este método habría que meterlo en la clase modelfacade 
-////	private void addUsuario() {
-////		Usuario usuario =new Usuario();
-////		try{
-////			PropertyUtils.copyProperties(usuario, usuarioBean);
-////			//log.info("copy propertues usuario apellidos== "+ usuario.getApellidos());
-////		}catch(IllegalAccessException e){
-////		    log.error(e.getMessage());
-////		   // return null;
-////		}catch(java.lang.reflect.InvocationTargetException e){
-////			log.error(e.getMessage());
-////		    //return null;
-////		}catch(NoSuchMethodException e){
-////			log.error(e.getMessage());
-////		    //return null;
-////		}
-////		UsuarioDAO usuarioDAO = new UsuarioDAO();
-////		usuarioDAO.crearUsuario(usuario);
-////	}
-
 }
